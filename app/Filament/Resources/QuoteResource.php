@@ -24,10 +24,13 @@ class QuoteResource extends Resource
         return $form
             ->schema([
                 Forms\Components\FileUpload::make('image')
+                ->columnSpanFull()
                     ->image(),
                 Forms\Components\TextInput::make('quote')
+                ->columnSpanFull()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('quoted_by')
+                ->columnSpanFull()
                     ->maxLength(255),
             ]);
     }
@@ -74,8 +77,8 @@ class QuoteResource extends Resource
     {
         return [
             'index' => Pages\ListQuotes::route('/'),
-            'create' => Pages\CreateQuote::route('/create'),
-            'edit' => Pages\EditQuote::route('/{record}/edit'),
+            // 'create' => Pages\CreateQuote::route('/create'),
+            // 'edit' => Pages\EditQuote::route('/{record}/edit'),
         ];
     }
 }

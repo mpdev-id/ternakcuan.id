@@ -24,6 +24,7 @@ class TestimonyResource extends Resource
         return $form
             ->schema([
                 Forms\Components\FileUpload::make('image')
+                ->columnSpanFull()
                     ->image(),
                 Forms\Components\TextInput::make('name')
                     ->maxLength(255),
@@ -82,8 +83,8 @@ class TestimonyResource extends Resource
     {
         return [
             'index' => Pages\ListTestimonies::route('/'),
-            'create' => Pages\CreateTestimony::route('/create'),
-            'edit' => Pages\EditTestimony::route('/{record}/edit'),
+            // 'create' => Pages\CreateTestimony::route('/create'),
+            // 'edit' => Pages\EditTestimony::route('/{record}/edit'),
         ];
     }
 }

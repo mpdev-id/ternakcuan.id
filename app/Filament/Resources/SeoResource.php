@@ -127,8 +127,8 @@ class SeoResource extends Resource
     {
         return [
             'index' => Pages\ListSeos::route('/'),
-            'create' => Pages\CreateSeo::route('/create'),
-            'edit' => Pages\EditSeo::route('/{record}/edit'),
+            // 'create' => Pages\CreateSeo::route('/create'),
+            // 'edit' => Pages\EditSeo::route('/{record}/edit'),
         ];
     }
 }

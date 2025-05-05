@@ -31,11 +31,12 @@ class CopyWritingResource extends Resource
                     // ->maxSize(4096)
                     // ->storeFileNamesUsing(function (string $name, array $data): string {
                     //     return $data['record']->id . '-' . $name;})
-                        ,
+                    ->columnSpanFull(),
 
                 Forms\Components\TextInput::make('headline')
                     ->required()
-                    ->maxLength(255),
+                    ->columnSpanFull()
+                    ->maxLength(100),
                 Forms\Components\Textarea::make('subheadline')
                     ->required()
                     ->columnSpanFull(),
@@ -55,7 +56,7 @@ class CopyWritingResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('company_video')
-                    ->size(150, 150)
+                    ->size(50, 50)
                     ->rounded()
                     ->label('Company Video'),
                 Tables\Columns\TextColumn::make('headline')
@@ -99,8 +100,8 @@ class CopyWritingResource extends Resource
     {
         return [
             'index' => Pages\ListCopyWritings::route('/'),
-            'create' => Pages\CreateCopyWriting::route('/create'),
-            'edit' => Pages\EditCopyWriting::route('/{record}/edit'),
+            // 'create' => Pages\CreateCopyWriting::route('/create'),
+            // 'edit' => Pages\EditCopyWriting::route('/{record}/edit'),
         ];
     }
 }

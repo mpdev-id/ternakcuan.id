@@ -36,7 +36,7 @@ class PartnerResource extends Resource
                     ->acceptedFileTypes(['image/*'])
                     ->imageEditor()
                     ->maxSize(1024)
-
+                    ->columnSpanFull()
                     ,
                 Forms\Components\TextInput::make('url')
                 ->label('Website URL')
@@ -90,8 +90,8 @@ class PartnerResource extends Resource
     {
         return [
             'index' => Pages\ListPartners::route('/'),
-            'create' => Pages\CreatePartner::route('/create'),
-            'edit' => Pages\EditPartner::route('/{record}/edit'),
+            // 'create' => Pages\CreatePartner::route('/create'),
+            // 'edit' => Pages\EditPartner::route('/{record}/edit'),
         ];
     }
 }
