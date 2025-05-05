@@ -9,5 +9,5 @@ class CopyWriting extends Model
 {
     use HasFactory;
     protected $table = 'copywritings';
-    protected $guardded = [''];
+    protected $fillable = ['company_video'];
 }
