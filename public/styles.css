@@ -1,43 +1,45 @@
+
+
 /* Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   body {
     font-family: "Montserrat", sans-serif;
     background-color: #000;
     color: #fff;
     overflow-x: hidden;
   }
-  
+
   .page-wrapper {
     width: 100%;
     overflow-x: hidden;
   }
-  
+
   .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 10px;
   }
-  
+
   img {
     max-width: 100%;
     height: auto;
     vertical-align: middle;
   }
-  
+
   a {
     text-decoration: none;
     color: inherit;
   }
-  
+
   ul {
     list-style: none;
   }
-  
+
   /* Button Styles */
   .btn {
     display: inline-block;
@@ -49,121 +51,121 @@
     text-align: center;
     transition: all 0.3s ease;
   }
-  
+
   .btn-primary {
-    background-color: #75f991;
+    background-color: var(--maincolor);
     color: #000;
   }
-  
+
   .btn-outline {
     background-color: transparent;
-    border: 1px solid #74f990;
-    color: #74f990;
+    border: 1px solid var(--maincolor);
+    color: var(--maincolor);
   }
-  
+
   .btn-large {
     font-weight: 700;
     padding: 20px 25px;
     border-radius: 3px;
   }
-  
+
   .btn-full {
     width: 100%;
   }
-  
+
   /* Header Styles */
   .main-header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 10px 0;
+    padding: 20px 0;
   }
-  
+
   .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .logo-container {
     display: flex;
     align-items: center;
   }
-  
+
   .logo-image {
     max-width: 146px;
   }
-  
+
   .main-nav {
     display: flex;
     gap: 20px;
     align-items: center;
   }
-  
+
   /* Hero Section */
   .hero-section {
     margin: 120px 0;
     position: relative;
   }
-  
+
   .hero-container {
     display: flex;
     position: relative;
     max-width: 1200px;
   }
-  
+
   .hero-content {
-    width: 39%;
+    width: 42%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 50px;
     z-index: 1;
   }
-  
+
   .hero-title {
     font-size: 32px;
     font-weight: 800;
     line-height: 38.4px;
     color: #fff;
   }
-  
+
   .hero-subtitle {
     font-size: 16px;
     line-height: 24px;
     color: #fff;
     margin-bottom: 20px;
   }
-  
+
   .hero-background {
     position: absolute;
-    left: -575px;
-    top: -283px;
+    left: -160px;
+    top: -180px;
     width: 110%;
     z-index: 0;
   }
-  
+
   .hero-bg-image {
     max-width: 748px;
   }
-  
+
   .hero-video-container {
     width: 100%;
     margin-left: auto;
   }
-  
+
   .hero-video {
     width: 100%;
     border-radius: 18px;
     object-fit: cover;
     background-color: #000;
   }
-  
+
   /* Partners Section */
   .partners-section {
     margin-top: 100px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center !important;
   }
-  
+
   .partners-grid-top,
   .partners-grid-bottom {
     display: grid;
@@ -171,36 +173,36 @@
     gap: 20px;
     padding: 10px;
   }
-  
+
   .partners-grid-top {
     grid-template-columns: repeat(7, 1fr);
     width: 762px;
   }
-  
+
   .partners-grid-bottom {
     grid-template-columns: repeat(8, 1fr);
     width: 870px;
   }
-  
+
   .partner-logo {
     width: 100%;
   }
-  
+
   /* LinkedIn Banner */
   .linkedin-banner {
-    background-color: #74f990;
+    background-color: var(--maincolor);
     margin-bottom: 100px;
-    padding: 5px;
+    padding: 15px;
     display: flex;
     justify-content: center;
   }
-  
+
   .linkedin-container {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
   }
-  
+
   .linkedin-text {
     font-family: "Montserrat", sans-serif;
     font-size: 12px;
@@ -208,23 +210,23 @@
     line-height: 12px;
     color: #000;
   }
-  
+
   .linkedin-logo {
     max-width: 33px;
   }
-  
+
   /* Features Section */
   .features-section {
     padding: 0 10px;
   }
-  
+
   .features-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
   }
-  
+
   .section-title {
     font-size: 32px;
     font-weight: 700;
@@ -233,7 +235,7 @@
     text-align: center;
     max-width: 681px;
   }
-  
+
   .section-subtitle {
     font-size: 12px;
     font-weight: 600;
@@ -244,7 +246,7 @@
     border-radius: 6px;
     padding: 10px;
   }
-  
+
   .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -253,31 +255,31 @@
     width: 100%;
     padding: 10px;
   }
-  
+
   .feature-image {
     width: 100%;
   }
-  
+
   /* Mission Section */
   .mission-section {
     background-color: #1a1c1f;
     margin-top: 130px;
     padding: 40px;
   }
-  
+
   .mission-container {
     display: flex;
     gap: 20px;
   }
-  
+
   .mission-image-container {
     width: 100%;
   }
-  
+
   .mission-image {
     width: 100%;
   }
-  
+
   .mission-content {
     width: 100%;
     display: flex;
@@ -285,7 +287,7 @@
     gap: 20px;
     align-items: flex-start;
   }
-  
+
   .mission-title {
     font-size: 32px;
     font-weight: 700;
@@ -293,7 +295,7 @@
     color: #fff;
     width: 388px;
   }
-  
+
   .mission-text {
     font-size: 14px;
     line-height: 21px;
@@ -301,32 +303,32 @@
     width: 388px;
     margin-bottom: -45px;
   }
-  
+
   .mission-logo {
     align-self: flex-end;
     max-width: 146px;
     margin-right: -30px;
   }
-  
+
   /* Benefits Section */
   .benefits-section {
     margin-top: 100px;
     padding: 0 10px;
   }
-  
+
   .benefits-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 60px;
   }
-  
+
   .benefits-cards {
     display: flex;
     gap: 60px;
     width: 950px;
   }
-  
+
   .benefit-card {
     background-color: #1a1c1f;
     border-radius: 6px;
@@ -336,12 +338,12 @@
     position: relative;
     width: 100%;
   }
-  
+
   .benefit-card-image-container {
     width: 41%;
     position: relative;
   }
-  
+
   .benefit-card-image {
     position: absolute;
     left: -20px;
@@ -349,14 +351,14 @@
     z-index: 1;
     width: 100%;
   }
-  
+
   .benefit-card-content {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .benefit-card-title {
     font-size: 24px;
     font-weight: 700;
@@ -364,14 +366,14 @@
     color: #fff;
     width: 388px;
   }
-  
+
   .benefit-card-description {
     font-size: 14px;
     line-height: 21px;
     color: rgba(255, 255, 255, 0.79);
     width: 388px;
   }
-  
+
   /* FAQ Section */
   .faq-section {
     display: flex;
@@ -379,29 +381,29 @@
     gap: 40px;
     width: 1000px;
   }
-  
+
   .faq-column {
     display: flex;
     gap: 30px;
     width: 100%;
     padding: 10px;
   }
-  
+
   .faq-item {
     width: 50%;
     display: flex;
     align-items: flex-start;
   }
-  
+
   .faq-icon {
     margin-right: 15px;
     flex-shrink: 0;
   }
-  
+
   .faq-content {
     flex-grow: 1;
   }
-  
+
   .faq-title {
     font-size: 20px;
     font-weight: 700;
@@ -409,27 +411,27 @@
     color: #fff;
     margin-bottom: 10px;
   }
-  
+
   .faq-text {
     font-size: 14px;
     line-height: 21px;
     color: #e7e7e7;
   }
-  
+
   /* Membership Section */
   .membership-section {
     margin-top: 180px;
     padding: 0 10px;
     position: relative;
   }
-  
+
   .membership-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
   }
-  
+
   .membership-background-left {
     position: absolute;
     left: -613px;
@@ -437,7 +439,7 @@
     width: 150%;
     z-index: 0;
   }
-  
+
   .membership-background-right {
     position: absolute;
     right: -501px;
@@ -446,11 +448,11 @@
     z-index: 0;
     transform: rotate(10deg);
   }
-  
+
   .membership-bg-image {
     max-width: 923px;
   }
-  
+
   .membership-title {
     font-size: 48px;
     font-weight: 700;
@@ -459,15 +461,15 @@
     text-align: center;
     z-index: 1;
   }
-  
+
   .highlight {
-    color: #74f990;
+    color: var(--maincolor);
   }
-  
+
   .bold {
     font-weight: 800;
   }
-  
+
   .membership-features {
     display: flex;
     gap: 60px;
@@ -476,31 +478,31 @@
     width: 100%;
     z-index: 1;
   }
-  
+
   .membership-features-list {
     display: flex;
     flex-direction: column;
   }
-  
+
   .membership-feature-item {
     display: flex;
     align-items: center;
     padding-bottom: 4px;
     text-align: left;
   }
-  
+
   .membership-feature-item:not(:first-child) {
     margin-top: 4px;
   }
-  
+
   .feature-icon {
-    fill: #74f990;
+    fill: var(--maincolor);
     height: 20px;
     width: 20px;
     margin-right: 5px;
     transition: fill 0.3s;
   }
-  
+
   .membership-feature-item span {
     font-size: 20px;
     line-height: 30px;
@@ -508,18 +510,18 @@
     padding-left: 5px;
     transition: color 0.3s;
   }
-  
+
   /* Pricing Section */
   .pricing-section {
     margin-top: 150px;
   }
-  
+
   .pricing-container {
     display: flex;
     gap: 30px;
     align-items: stretch;
   }
-  
+
   .pricing-card {
     background-color: #0a0a0a;
     border: 2px solid rgba(255, 255, 255, 0.09);
@@ -531,17 +533,17 @@
     width: 100%;
     text-align: center;
   }
-  
+
   .pricing-card-featured {
     background-color: #0a0a0a;
-    border: 2px solid #75f991;
+    border: 2px solid var(--maincolor);
     border-radius: 12px;
-    box-shadow: 0 -40px 0 0 #75f991;
+    box-shadow: 0 -40px 0 0 var(--maincolor);
     margin-top: -50px;
     margin-bottom: -50px;
     position: relative;
   }
-  
+
   .pricing-badge {
     font-size: 20px;
     font-weight: 800;
@@ -549,14 +551,14 @@
     line-height: 20px;
     margin-top: -60px;
   }
-  
+
   .pricing-duration {
     font-size: 36px;
     font-weight: 800;
     line-height: 43.2px;
     color: #fff;
   }
-  
+
   .pricing-price {
     font-size: 24px;
     font-weight: 600;
@@ -565,7 +567,7 @@
     margin-top: -10px;
     margin-bottom: 80px;
   }
-  
+
   .pricing-save-label {
     font-size: 18px;
     font-weight: 600;
@@ -574,21 +576,21 @@
     margin-bottom: -10px;
     margin-top: -55px;
   }
-  
+
   .pricing-save-amount {
     font-size: 36px;
     font-weight: 700;
     font-style: italic;
     line-height: 43.2px;
-    color: #75f991;
+    color: var(--maincolor);
     margin-bottom: 15px;
   }
-  
+
   .pricing-action {
     margin-bottom: 10px;
     z-index: 9;
   }
-  
+
   .pricing-promo {
     display: flex;
     align-items: center;
@@ -596,18 +598,18 @@
     gap: 10px;
     z-index: 9;
   }
-  
+
   .promo-icon {
     margin-right: -5px;
   }
-  
+
   .promo-text {
     font-size: 13px;
     font-weight: 500;
     line-height: 27px;
     color: #fff;
   }
-  
+
   .pricing-note {
     font-size: 13px;
     font-weight: 500;
@@ -616,60 +618,60 @@
     color: rgba(255, 255, 255, 0.54);
     margin-top: 10px;
   }
-  
+
   /* Quote Section */
   .quote-section {
     background-color: rgba(255, 255, 255, 0.063);
     margin-top: 200px;
   }
-  
+
   .quote-container {
     display: flex;
     padding-top: 40px;
   }
-  
+
   .quote-image-container {
     width: 46%;
     flex-shrink: 0;
   }
-  
+
   .quote-image {
     max-width: 562px;
     margin-left: -50px;
   }
-  
+
   .quote-content {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-  
+
   .quote-text {
     font-size: 36px;
     line-height: 54px;
     color: #fff;
     margin-left: -70px;
   }
-  
+
   /* Testimonials Section */
   .testimonials-section {
     margin-top: 200px;
     padding: 0 10px;
   }
-  
+
   .testimonials-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .testimonials-grid {
     display: flex;
     gap: 20px;
     width: 100%;
   }
-  
+
   .testimonial-card {
     width: 100%;
     display: flex;
@@ -677,18 +679,18 @@
     gap: 20px;
     position: relative;
   }
-  
+
   .testimonial-image {
     width: 100%;
   }
-  
+
   .testimonial-text {
     font-size: 14px;
     line-height: 28px;
     color: rgba(255, 255, 255, 0.79);
     margin-bottom: 45px;
   }
-  
+
   .testimonial-author {
     position: absolute;
     bottom: 0;
@@ -697,19 +699,19 @@
     color: rgba(255, 255, 255, 0.85);
     line-height: 16px;
   }
-  
+
   /* Footer */
   .main-footer {
     margin-top: 160px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
-  
+
   .footer-container {
     display: flex;
     gap: 40px;
     padding: 60px 0 40px;
   }
-  
+
   .footer-info,
   .footer-links {
     width: 100%;
@@ -717,13 +719,13 @@
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .footer-title {
     font-weight: 700;
     line-height: 16px;
     color: #fff;
   }
-  
+
   .footer-address,
   .footer-cs,
   .footer-link {
@@ -732,50 +734,50 @@
     line-height: 21px;
     color: rgba(255, 255, 255, 0.85);
   }
-  
+
   .footer-cs {
     margin-top: 10px;
   }
-  
+
   .footer-social {
     display: flex;
     gap: 8px;
     width: 100%;
   }
-  
+
   .social-title {
     font-weight: 700;
     color: #fff;
   }
-  
+
   .footer-bottom {
     padding-bottom: 40px;
   }
-  
+
   .footer-divider {
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     width: 100%;
     margin: 15px 0;
   }
-  
+
   .footer-copyright {
     display: flex;
     align-items: center;
     gap: 8px;
     width: 100%;
   }
-  
+
   .footer-logo {
     max-width: 196px;
   }
-  
+
   .copyright-text {
     font-size: 12px;
     font-weight: 500;
     line-height: 12px;
     color: rgba(255, 255, 255, 0.85);
   }
-  
+
   /* Responsive Styles */
   @media (max-width: 1200px) {
     .hero-container,
@@ -783,118 +785,118 @@
     .faq-section {
       width: 100%;
     }
-  
+
     .partners-grid-top,
     .partners-grid-bottom {
       width: 100%;
       grid-template-columns: repeat(4, 1fr);
     }
-  
+
     .features-grid {
       grid-template-columns: repeat(2, 1fr);
     }
-  
+
     .mission-container {
       flex-direction: column;
     }
-  
+
     .mission-title,
     .mission-text {
       width: 100%;
     }
-  
+
     .pricing-container {
       flex-direction: column;
       align-items: center;
     }
-  
+
     .pricing-card {
       max-width: 500px;
     }
-  
+
     .pricing-card-featured {
       margin-top: 0;
       margin-bottom: 0;
     }
   }
-  
+
   @media (max-width: 992px) {
     .hero-container {
       flex-direction: column;
     }
-  
+
     .hero-content {
       width: 100%;
       margin-bottom: 40px;
     }
-  
+
     .hero-background {
       display: none;
     }
-  
+
     .benefits-cards {
       flex-direction: column;
     }
-  
+
     .testimonials-grid {
       flex-direction: column;
     }
   }
-  
+
   @media (max-width: 768px) {
     .features-grid {
       grid-template-columns: 1fr;
     }
-  
+
     .faq-column {
       flex-direction: column;
     }
-  
+
     .faq-item {
       width: 100%;
     }
-  
+
     .footer-container {
       flex-direction: column;
     }
-  
+
     .membership-features {
       flex-direction: column;
       gap: 20px;
     }
   }
-  
+
   @media (max-width: 640px) {
     .header-container {
       flex-direction: column;
       gap: 20px;
     }
-  
+
     .main-nav {
       width: 100%;
       justify-content: center;
     }
-  
+
     .hero-video {
       width: 100%;
       align-self: center;
     }
-  
+
     .section-title,
     .mission-title,
     .membership-title {
       font-size: 24px;
       line-height: 32px;
     }
-  
+
     .quote-container {
       flex-direction: column;
     }
-  
+
     .quote-image-container {
       width: 100%;
     }
-  
+
     .quote-text {
       margin-left: 0;
       font-size: 24px;
@@ -903,4 +905,3 @@
       padding: 20px 0;
     }
   }
-  

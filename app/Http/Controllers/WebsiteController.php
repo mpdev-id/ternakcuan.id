@@ -6,10 +6,9 @@ use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
 {
-    
+
  public function index(){
         return view('homepage.index',[
-
             'abouts' => \App\Models\About::first(),
             'partners' => \App\Models\Partner::all(),
             'testimonies' => \App\Models\Testimony::all(),
@@ -17,6 +16,7 @@ class WebsiteController extends Controller
             'quotes' => \App\Models\Quote::all(),
             'copywriting' => \App\Models\CopyWriting::first(),
             'seo'=> \App\Models\Seo::first(),
+            'webconfig' => \App\Models\WebConfig::first()
         ]);
  }
 }

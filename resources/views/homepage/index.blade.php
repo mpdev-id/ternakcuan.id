@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ $seo['meta_title'] }}</title>
+    <title>{{ $webconfig['meta_maincolor'] }} {{ $seo['meta_title'] }}</title>
     <meta name="description" content="{{ $seo['meta_description'] }}">
     <meta name="keywords" content="{{ $seo['meta_keywords'] }}">
     <meta name="author" content="{{ $seo['meta_author'] }}">
@@ -15,6 +15,14 @@
     <meta name="twitter:title" content="{{ $seo['twitter_title'] }}">
     <meta name="twitter:description" content="{{ $seo['twitter_description'] }}">
     <meta name="twitter:image" content="{{ $seo['twitter_image'] }}">
+    <link rel="shortcut icon" href="{{ url('storage/'.$webconfig['favicon']) }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ url('storage/'.$webconfig['favicon']) }}">
+    <link rel="icon" href="{{ url('storage/'.$webconfig['favicon']) }}" type="image/x-icon">
+    <style>
+        :root {
+          --maincolor: {{ $webconfig['main_color'] }};
+        }
+    </style>
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
@@ -27,14 +35,15 @@
       <header class="main-header">
         <div class="container header-container">
           <div class="logo-container">
-            <a href="https://akademicrypto.com/" class="logo-link">
+            <a href="{{ $seo['meta_canonical'] }}" class="logo-link">
               <img
-                src="https://ternakuang.id/wp-content/uploads/2023/11/logo-ternakuang.webp"
+                src="{{ url('storage/'.$webconfig['logo']) }}"
                 alt="Ternak Cuan Logo"
                 width="282"
                 height="28"
                 class="logo-image"
               />
+              {{-- {{ $seo['meta_title'] }} --}}
             </a>
           </div>
           <nav class="main-nav">
@@ -62,9 +71,10 @@
               >{{ $copywriting['CTAButton'] }}</a
             >
           </div>
+
           <div class="hero-background">
             <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/asset_1_10x_6.webp"
+              src="{{ asset(asset('asset/images/asset_1_10x_6.webp')) }}"
               alt=""
               class="hero-bg-image"
               width="1225"
@@ -87,55 +97,47 @@
 
       <!-- Partners Section -->
       <section class="partners-section">
-        <div class="container">
+        <div class="container partners-container">
           <div class="partners-grid-top">
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/group_654035f754.webp"
-              alt="Partner logo"
-              class="partner-logo"
-              width="189"
-              height="58"
-            />
-          
+           @foreach ($partners->where('type', 'agregator') as $agregator)
+
+           <img
+           src="{{ asset('storage/'.$agregator['logo']) }}"
+           alt="{{ $agregator['name'] }} logo"
+           class="partner-logo"
+           width="89"
+           {{-- height="58" --}}
+           />
+           @endforeach
           </div>
+
           <div class="partners-grid-bottom">
+            @foreach ($partners->where('type', 'ekspedisi') as $ekspedisi)
+
             <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/image_711.webp"
-              alt="Partner logo"
-              class="partner-logo"
-              width="195"
-              height="49"
+            src="{{ asset('storage/'.$ekspedisi['logo']) }}"
+            alt="{{ $ekspedisi['name'] }} logo"
+            class="partner-logo"
+            width="89"
+            {{-- height="58" --}}
             />
-            
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/image_720.webp"
-              alt="Partner logo"
-              class="partner-logo"
-              width="188"
-              height="29"
-            />
+            @endforeach
           </div>
+
         </div>
       </section>
 
       <!-- LinkedIn Banner -->
       <section class="linkedin-banner">
         <div class="container linkedin-container">
-          <p class="linkedin-text">
-            LinkedIn 2022 Top Startups Indonesia Honored to be announced for
-          </p>
-          <img
-            src="https://ternakuang.id/wp-content/uploads/2024/12/image_removebg_preview_10_1.webp"
-            alt="LinkedIn logo"
-            class="linkedin-logo"
-            width="66"
-            height="52"
-          />
+          <h2 class="linkedin-text">
+            {{ $webconfig['main_description'] }}
+          </h2>
         </div>
       </section>
 
       <!-- Features Section -->
-      <section class="features-section">
+      {{-- <section class="features-section">
         <div class="container features-container">
           <h2 class="section-title">
             Platform Digital #1 untuk bantu kamu Belajar Keuangan & Berinvestasi
@@ -238,10 +240,10 @@
             >Jadi Member Sekarang</a
           >
         </div>
-      </section>
+      </section> --}}
 
       <!-- Mission Section -->
-      <section class="mission-section">
+      {{-- <section class="mission-section">
         <div class="container mission-container">
           <div class="mission-image-container">
             <img
@@ -275,7 +277,7 @@
             />
           </div>
         </div>
-      </section>
+      </section> --}}
 
       <!-- Benefits Section -->
       <section class="benefits-section">
@@ -340,7 +342,7 @@
                       cx="19.9995"
                       cy="20"
                       r="8.88889"
-                      fill="#5CED7B"
+                      fill="{{ $webconfig['main_color'] ?? '#75f991' }}"
                     ></circle>
                     <path
                       d="M15.5552 19.8023L18.3835 22.9628L24.4441 17.0369"
@@ -373,7 +375,7 @@
                       cx="19.9995"
                       cy="20"
                       r="8.88889"
-                      fill="#5CED7B"
+                      fill="{{ $webconfig['main_color'] ?? '#75f991' }}"
                     ></circle>
                     <path
                       d="M15.5552 19.8023L18.3835 22.9628L24.4441 17.0369"
@@ -408,7 +410,7 @@
                       cx="19.9995"
                       cy="20"
                       r="8.88889"
-                      fill="#5CED7B"
+                      fill="{{ $webconfig['main_color'] ?? '#75f991' }}"
                     ></circle>
                     <path
                       d="M15.5552 19.8023L18.3835 22.9628L24.4441 17.0369"
@@ -441,7 +443,7 @@
                       cx="19.9995"
                       cy="20"
                       r="8.88889"
-                      fill="#5CED7B"
+                      fill="{{ $webconfig['main_color'] ?? '#75f991' }}"
                     ></circle>
                     <path
                       d="M15.5552 19.8023L18.3835 22.9628L24.4441 17.0369"
@@ -476,7 +478,7 @@
                       cx="19.9995"
                       cy="20"
                       r="8.88889"
-                      fill="#5CED7B"
+                      fill="{{ $webconfig['main_color'] ?? '#75f991' }}"
                     ></circle>
                     <path
                       d="M15.5552 19.8023L18.3835 22.9628L24.4441 17.0369"
@@ -509,7 +511,7 @@
                       cx="19.9995"
                       cy="20"
                       r="8.88889"
-                      fill="#5CED7B"
+                      fill="{{ $webconfig['main_color'] ?? '#75f991' }}"
                     ></circle>
                     <path
                       d="M15.5552 19.8023L18.3835 22.9628L24.4441 17.0369"
