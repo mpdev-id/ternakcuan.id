@@ -11,23 +11,28 @@
     <link rel="canonical" href="{{ $seo['meta_canonical'] }}">
     <meta property="og:title" content="{{ $seo['og_title'] }}">
     <meta property="og:description" content="{{ $seo['og_description'] }}">
-    <meta property="og:image" content="{{ $seo['og_image'] }}">
+    <meta property="og:image" content="{{ url('storage/'.$seo['og_image']) }}">
     <meta name="twitter:title" content="{{ $seo['twitter_title'] }}">
     <meta name="twitter:description" content="{{ $seo['twitter_description'] }}">
     <meta name="twitter:image" content="{{ $seo['twitter_image'] }}">
     <link rel="shortcut icon" href="{{ url('storage/'.$webconfig['favicon']) }}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ url('storage/'.$webconfig['favicon']) }}">
-    <link rel="icon" href="{{ url('storage/'.$webconfig['favicon']) }}" type="image/x-icon">
-    <style>
-        :root {
-          --maincolor: {{ $webconfig['main_color'] }};
-        }
-    </style>
     <link rel="stylesheet" href="styles.css" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" href="{{ url('storage/'.$webconfig['favicon']) }}" type="image/x-icon">
+<style>
+        :root {
+          --maincolor: {{ $webconfig['main_color'] }};
+          font-family: 'Poppins', sans-serif; !important
+        }
+
+        /* h2{
+        } */
+    </style>
   </head>
   <body >
     <div class="page-wrapper ">
@@ -39,9 +44,9 @@
               <img
                 src="{{ url('storage/'.$webconfig['logo']) }}"
                 alt="Ternak Cuan Logo"
-                width="282"
-                height="28"
-                class="logo-image"
+                width="180"
+                height="180"
+                class="logo-image rounded-xl"
               />
               {{-- {{ $seo['meta_title'] }} --}}
             </a>
@@ -74,23 +79,32 @@
 
           <div class="hero-background">
             <img
-              src="{{ asset(asset('asset/images/asset_1_10x_6.webp')) }}"
+              src="{{ asset('asset/images/asset_1_10x_6.webp') }}"
               alt=""
               class="hero-bg-image"
               width="1225"
               height="1225"
             />
           </div>
+
           <div class="hero-video-container">
-            <video
-              src="{{ $copywriting['company_video'] }}"
-              autoplay
-              loop
-              muted
-              playsinline
-              controlslist="nodownload"
-              class="hero-video"
-            ></video>
+            @if (pathinfo($copywriting['company_video'], PATHINFO_EXTENSION) === 'mp4')
+              <video
+                src="{{ $copywriting['company_video'] }}"
+                autoplay
+                loop
+                muted
+                playsinline
+                controlslist="nodownload"
+                class="hero-video"
+              ></video>
+            @else
+              <img
+                src="{{ $copywriting['company_video'] }}"
+                alt="Hero Image"
+                class="hero-image"
+              />
+            @endif
           </div>
         </div>
       </section>
@@ -137,110 +151,22 @@
       </section>
 
       <!-- Features Section -->
-      {{-- <section class="features-section">
+      <section class="features-section">
         <div class="container features-container">
           <h2 class="section-title">
-            Platform Digital #1 untuk bantu kamu Belajar Keuangan & Berinvestasi
+            Tentang Kami
           </h2>
-          <p class="section-subtitle">
-            Belajar dari nol hingga mahir dengan materi video yang mudah
-            dipahami, fleksibel, dan selalu diperbarui.
+          <p class="about-subtitle">
+           {{ $about['title'] }}
           </p>
-
-          <div class="features-grid">
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/group_65403087.webp"
-              alt="Feature screenshot"
-              class="feature-image"
-              width="650"
-              height="486"
-            />
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/group_65403182.webp"
-              alt="Feature screenshot"
-              class="feature-image"
-              width="650"
-              height="486"
-            />
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/group_65403184.webp"
-              alt="Feature screenshot"
-              class="feature-image"
-              width="650"
-              height="486"
-            />
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/group_6540357d62.webp"
-              alt="Feature screenshot"
-              class="feature-image"
-              width="650"
-              height="486"
-            />
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/group_654035765.webp"
-              alt="Feature screenshot"
-              class="feature-image"
-              width="650"
-              height="486"
-            />
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/group_654035766.webp"
-              alt="Feature screenshot"
-              class="feature-image"
-              width="650"
-              height="486"
-            />
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/group_654035h762.webp"
-              alt="Feature screenshot"
-              class="feature-image"
-              width="650"
-              height="486"
-            />
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/group_654035767.webp"
-              alt="Feature screenshot"
-              class="feature-image"
-              width="650"
-              height="486"
-            />
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/group_654j035766.webp"
-              alt="Feature screenshot"
-              class="feature-image"
-              width="650"
-              height="486"
-            />
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/group_654035775.webp"
-              alt="Feature screenshot"
-              class="feature-image"
-              width="650"
-              height="486"
-            />
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/group_6540357j62.webp"
-              alt="Feature screenshot"
-              class="feature-image"
-              width="650"
-              height="486"
-            />
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/group_65403576l5.webp"
-              alt="Feature screenshot"
-              class="feature-image"
-              width="650"
-              height="486"
-            />
+          <div class="about-description text-justify">
+            {{ $about['description']  }}
           </div>
 
-          <a
-            href="https://ternakuang.id/#pricing"
-            class="btn btn-primary btn-large"
-            >Jadi Member Sekarang</a
-          >
+
+
         </div>
-      </section> --}}
+      </section>
 
       <!-- Mission Section -->
       {{-- <section class="mission-section">
@@ -282,8 +208,8 @@
       <!-- Benefits Section -->
       <section class="benefits-section">
         <div class="container benefits-container">
-          <h2 class="section-title">Apa yang akan kalian dapat</h2>
-
+          <h2 class="section-title" >Layanan {{ $webconfig['title'] }}</h2>
+{{--
           <div class="benefits-cards">
             <div class="benefit-card">
               <div class="benefit-card-image-container">
@@ -291,8 +217,8 @@
                   src="https://ternakuang.id/wp-content/uploads/2024/12/frame1.webp"
                   alt="Analisa Saham"
                   class="benefit-card-image"
-                  width="384"
-                  height="342"
+                  width="1384"
+                  height="1342"
                 />
               </div>
               <div class="benefit-card-content">
@@ -324,211 +250,60 @@
                 </p>
               </div>
             </div>
-          </div>
+          </div> --}}
 
           <div class="faq-section">
-            <div class="faq-column">
-              <div class="faq-item">
-                <div class="faq-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                  >
-                    <circle cx="20" cy="20" r="20" fill="#1D1D1D"></circle>
-                    <circle
-                      cx="19.9995"
-                      cy="20"
-                      r="8.88889"
-                      fill="{{ $webconfig['main_color'] ?? '#75f991' }}"
-                    ></circle>
-                    <path
-                      d="M15.5552 19.8023L18.3835 22.9628L24.4441 17.0369"
-                      stroke="#1A1C1F"
-                      stroke-width="2"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="faq-content">
-                  <h4 class="faq-title">Gimana kalo masih pemula banget?</h4>
-                  <p class="faq-text">
-                    Akademi online Ternak Cuan dibuat untuk Kamu dari yang ga
-                    ngerti sama sekali, sampai ngerti bagaimana memilih saham
-                    yang bagus untuk di investasi
-                  </p>
-                </div>
-              </div>
 
-              <div class="faq-item">
-                <div class="faq-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                  >
-                    <circle cx="20" cy="20" r="20" fill="#1D1D1D"></circle>
-                    <circle
-                      cx="19.9995"
-                      cy="20"
-                      r="8.88889"
-                      fill="{{ $webconfig['main_color'] ?? '#75f991' }}"
-                    ></circle>
-                    <path
-                      d="M15.5552 19.8023L18.3835 22.9628L24.4441 17.0369"
-                      stroke="#1A1C1F"
-                      stroke-width="2"
-                    ></path>
-                  </svg>
+            @php
+              $counter = 0;
+            @endphp
+            @foreach ($services as $item)
+              @if ($counter % 2 == 0)
+                <div class="faq-column">
+              @endif
+                <div class="faq-item">
+                  <div class="faq-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="40"
+                      height="40"
+                      viewBox="0 0 40 40"
+                      fill="none"
+                    >
+                      <circle cx="20" cy="20" r="20" fill="#1D1D1D"></circle>
+                      <circle
+                        cx="19.9995"
+                        cy="20"
+                        r="8.88889"
+                        fill="{{ $webconfig['main_color'] ?? '#75f991' }}"
+                      ></circle>
+                      <path
+                        d="M15.5552 19.8023L18.3835 22.9628L24.4441 17.0369"
+                        stroke="#1A1C1F"
+                        stroke-width="2"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="faq-content">
+                    <h4 class="faq-title">{{ $item->icon }}{{ $item->title }}</h4>
+                    <p class="faq-text">
+                      {!! $item->description !!}
+                    </p>
+                  </div>
                 </div>
-                <div class="faq-content">
-                  <h4 class="faq-title">Jadwalnya fleksibel ga ya?</h4>
-                  <p class="faq-text">
-                    Semua materi modul dan rekaman kelas live dapat kamu akses
-                    dimana saja kapan saja. Kami sangat menghargai waktu kamu,
-                    kamu yang atur sendiri waktu belajar kamu 😉
-                  </p>
+              @if ($counter % 2 == 1)
                 </div>
+              @endif
+              @php
+                $counter++;
+              @endphp
+            @endforeach
+            @if ($counter % 2 == 1)
               </div>
-            </div>
+            @endif
 
-            <div class="faq-column">
-              <div class="faq-item">
-                <div class="faq-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                  >
-                    <circle cx="20" cy="20" r="20" fill="#1D1D1D"></circle>
-                    <circle
-                      cx="19.9995"
-                      cy="20"
-                      r="8.88889"
-                      fill="{{ $webconfig['main_color'] ?? '#75f991' }}"
-                    ></circle>
-                    <path
-                      d="M15.5552 19.8023L18.3835 22.9628L24.4441 17.0369"
-                      stroke="#1A1C1F"
-                      stroke-width="2"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="faq-content">
-                  <h4 class="faq-title">Apakah akan dijamin profit?</h4>
-                  <p class="faq-text">
-                    Ternak Cuan tidak menjamin kamu profit, namun kamu akan
-                    dituntun, dan banyak sekali member lulusan ternak Cuan telah
-                    mengikuti course dan profit yang besar.
-                  </p>
-                </div>
-              </div>
 
-              <div class="faq-item">
-                <div class="faq-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                  >
-                    <circle cx="20" cy="20" r="20" fill="#1D1D1D"></circle>
-                    <circle
-                      cx="19.9995"
-                      cy="20"
-                      r="8.88889"
-                      fill="{{ $webconfig['main_color'] ?? '#75f991' }}"
-                    ></circle>
-                    <path
-                      d="M15.5552 19.8023L18.3835 22.9628L24.4441 17.0369"
-                      stroke="#1A1C1F"
-                      stroke-width="2"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="faq-content">
-                  <h4 class="faq-title">Butuh modal yang besar gak ya?</h4>
-                  <p class="faq-text">
-                    Ternak Cuan adalah platform edukasi keuangan pribadi dan
-                    investasi mulai dari 83.000/ bulan. Untuk mulai investasi
-                    bisa dari 100rb.
-                  </p>
-                </div>
-              </div>
-            </div>
 
-            <div class="faq-column">
-              <div class="faq-item">
-                <div class="faq-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                  >
-                    <circle cx="20" cy="20" r="20" fill="#1D1D1D"></circle>
-                    <circle
-                      cx="19.9995"
-                      cy="20"
-                      r="8.88889"
-                      fill="{{ $webconfig['main_color'] ?? '#75f991' }}"
-                    ></circle>
-                    <path
-                      d="M15.5552 19.8023L18.3835 22.9628L24.4441 17.0369"
-                      stroke="#1A1C1F"
-                      stroke-width="2"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="faq-content">
-                  <h4 class="faq-title">Bagaimana cara menjadi Member?</h4>
-                  <p class="faq-text">
-                    Kunjungi Ternakuang, pilih paket member, daftar atau login,
-                    lakukan pembayaran, dan nikmati akses ke materi belajar,
-                    webinar, kelas online, serta komunitas eksklusif.
-                  </p>
-                </div>
-              </div>
-
-              <div class="faq-item">
-                <div class="faq-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                  >
-                    <circle cx="20" cy="20" r="20" fill="#1D1D1D"></circle>
-                    <circle
-                      cx="19.9995"
-                      cy="20"
-                      r="8.88889"
-                      fill="{{ $webconfig['main_color'] ?? '#75f991' }}"
-                    ></circle>
-                    <path
-                      d="M15.5552 19.8023L18.3835 22.9628L24.4441 17.0369"
-                      stroke="#1A1C1F"
-                      stroke-width="2"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="faq-content">
-                  <h4 class="faq-title">Bisa langsung praktek ga?</h4>
-                  <p class="faq-text">
-                    Tentu ! Ini saat yang sangat tepat untuk kamu mulai belajar
-                    dan langsung terjun praktek ke pasar saham
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -558,9 +333,56 @@
           <h2 class="membership-title">
             <span class="highlight">Membership</span>
             <span class="bold">
-                <img src="Ternak Cuan Logo - White with Transparent Background.svg" alt="" srcset="">
+                <img class="w-60" src="{{ asset('storage/'.$webconfig['logo']) }}" alt="" srcset="{{ asset('storage/'.$webconfig['logo']) }}">
             </span>
           </h2>
+
+
+<div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
+    @foreach ([
+        ['heading' => 'What is Flowbite?', 'content' => 'Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more. Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.'],
+        ['heading' => 'Is there a Figma file available?', 'content' => 'Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file. Check out the <a href="https://flowbite.com/figma/" class="text-blue-600 dark:text-blue-500 hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.'],
+        ['heading' => 'What are the differences between Flowbite and Tailwind UI?', 'content' => 'The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages. However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds. Learn more about these technologies: <ul class="ps-5 text-gray-500 list-disc dark:text-gray-400"><li><a href="https://flowbite.com/pro/" class="text-blue-600 dark:text-blue-500 hover:underline">Flowbite Pro</a></li><li><a href="https://tailwindui.com/" rel="nofollow" class="text-blue-600 dark:text-blue-500 hover:underline">Tailwind UI</a></li></ul>']
+    ] as $index => $item)
+    <h2 id="accordion-flush-heading-{{ $index }}">
+      <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-{{ $index }}" aria-expanded="false" aria-controls="accordion-flush-body-{{ $index }}">
+        <span>{{ $item['heading'] }}</span>
+        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0 transition-transform" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+        </svg>
+      </button>
+    </h2>
+    <div id="accordion-flush-body-{{ $index }}" class="hidden" aria-labelledby="accordion-flush-heading-{{ $index }}">
+      <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+        {!! $item['content'] !!}
+      </div>
+    </div>
+    @endforeach
+</div>
+
+<script>
+  document.querySelectorAll('[data-accordion="collapse"]').forEach(accordion => {
+    accordion.querySelectorAll('button').forEach(button => {
+      button.addEventListener('click', () => {
+        const target = document.querySelector(button.getAttribute('data-accordion-target'));
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+        document.querySelectorAll('[id^="accordion-flush-body"]').forEach(body => {
+          if (body !== target) {
+            body.classList.add('hidden');
+            body.previousElementSibling.querySelector('svg[data-accordion-icon]').style.transform = 'rotate(0deg)';
+            body.previousElementSibling.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        target.classList.toggle('hidden', isExpanded);
+        button.setAttribute('aria-expanded', !isExpanded);
+        button.querySelector('svg[data-accordion-icon]').style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+      });
+    });
+  });
+</script>
+
 
           <div class="membership-features">
             <ul class="membership-features-list">
@@ -652,7 +474,7 @@
       <!-- Pricing Cards Section -->
       <section class="pricing-section">
         <div class="container pricing-container">
-          <div class="pricing-card">
+          {{-- <div class="pricing-card">
             <h3 class="pricing-duration">6 Bulan</h3>
             <p class="pricing-price">Rp 166.000</p>
             <div class="pricing-action">
@@ -692,7 +514,7 @@
               <p class="promo-text">Punya Kode Promo?</p>
             </div>
             <p class="pricing-note">*Pembayaran langsung</p>
-          </div>
+          </div> --}}
 
           <div class="pricing-card pricing-card-featured">
             <div class="pricing-badge">Best Value</div>
@@ -739,7 +561,7 @@
             <p class="pricing-note">*Pembayaran langsung</p>
           </div>
 
-          <div class="pricing-card">
+          {{-- <div class="pricing-card">
             <h3 class="pricing-duration">3 Bulan</h3>
             <p class="pricing-price">Rp 186.000</p>
             <div class="pricing-action">
@@ -779,29 +601,40 @@
               <p class="promo-text">Punya Kode Promo?</p>
             </div>
             <p class="pricing-note">*Pembayaran langsung</p>
-          </div>
+          </div> --}}
+
         </div>
       </section>
 
       <!-- Quote Section -->
-      <section class="quote-section">
-        <div class="container quote-container">
-          <div class="quote-image-container">
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/warren_buffett_images_1.webp"
-              alt="Warren Buffett"
-              class="quote-image"
-              width="1124"
-              height="968"
-            />
-          </div>
-          <div class="quote-content">
-            <blockquote class="quote-text">
-              By far the best investment you can make is in yourself.
-            </blockquote>
-          </div>
-        </div>
-      </section>
+
+      @foreach ($quotes as $quote)
+            <section class="{{ $quote->quoted_by !='hadis'?'quote-section':'text-center'}}">
+                <div class="container ">
+                <div class="{{ $quote->quoted_by !='hadis'?'quote-container':'container'}}">
+                    <div class="{{ $quote->quoted_by !='hadis'?'quote-image-container':'disabled'}}">
+                    @if ($quote->image)
+                    <img
+                    src="{{ url('storage/'.$quote->image) }}"
+                    alt="Warren Buffett"
+                    class="quote-image"
+                    width="50%"
+                    {{-- height="50" --}}
+                    />
+                    @endif
+                </div>
+
+                <div class="{{ $quote->quoted_by !='hadis'?'quote-content':'text-center'}}">
+                    {{ $quote->quoted_by }}
+                        <blockquote class="quote-text">
+                    {{ $quote->quote }}
+                    </blockquote>
+                </div>
+
+                </div>
+            </div>
+        </section>
+        @endforeach
 
       <!-- Testimonials Section -->
       <section class="testimonials-section">
@@ -894,7 +727,7 @@
                 width="196"
                 height="18"
               />
-              <p class="copyright-text">© 2025 PT. Ternak Cuan</p>
+              <p class="copyright-text">© 2025 PT. {{ $webconfig['main_title'] }}</p>
             </div>
           </div>
         </div>

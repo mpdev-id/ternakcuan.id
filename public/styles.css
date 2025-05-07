@@ -367,6 +367,25 @@
     width: 388px;
   }
 
+   .about-subtitle {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 18px;
+    color: #fff;
+    text-align: center;
+    background-color: #1a1c1f;
+    border-radius: 6px;
+    padding: 10px;
+  }
+
+  .about-description {
+    font-size: 18px;
+    line-height: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+    width: 680px;
+  }
+
   .benefit-card-description {
     font-size: 14px;
     line-height: 21px;
@@ -622,12 +641,13 @@
   /* Quote Section */
   .quote-section {
     background-color: rgba(255, 255, 255, 0.063);
-    margin-top: 200px;
+    margin-top: 50px;
   }
 
   .quote-container {
     display: flex;
     padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   .quote-image-container {
@@ -637,7 +657,7 @@
 
   .quote-image {
     max-width: 562px;
-    margin-left: -50px;
+    margin-left: 50px;
   }
 
   .quote-content {
@@ -651,7 +671,7 @@
     font-size: 36px;
     line-height: 54px;
     color: #fff;
-    margin-left: -70px;
+    margin-left: 0px;
   }
 
   /* Testimonials Section */

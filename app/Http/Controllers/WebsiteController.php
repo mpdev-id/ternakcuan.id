@@ -9,7 +9,7 @@ class WebsiteController extends Controller
 
  public function index(){
         return view('homepage.index',[
-            'abouts' => \App\Models\About::first(),
+            'about' => \App\Models\About::first(),
             'partners' => \App\Models\Partner::all(),
             'testimonies' => \App\Models\Testimony::all(),
             'services' => \App\Models\Service::all(),
