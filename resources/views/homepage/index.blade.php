@@ -110,29 +110,28 @@
       </section>
 
       <!-- Partners Section -->
-      <section class="partners-section">
-        <div class="container partners-container">
-          <div class="partners-grid-top">
+
+      <section class="container">
+        <div class="flex flex-col items-center justify-center gap-5">
+          <div class="flex gap-5">
            @foreach ($partners->where('type', 'agregator') as $agregator)
 
            <img
            src="{{ asset('storage/'.$agregator['logo']) }}"
            alt="{{ $agregator['name'] }} logo"
-           class="partner-logo"
-           width="89"
+           class="w-24 object-contain"
            {{-- height="58" --}}
            />
            @endforeach
           </div>
 
-          <div class="partners-grid-bottom">
+          <div class="flex gap-5">
             @foreach ($partners->where('type', 'ekspedisi') as $ekspedisi)
 
             <img
             src="{{ asset('storage/'.$ekspedisi['logo']) }}"
             alt="{{ $ekspedisi['name'] }} logo"
-            class="partner-logo"
-            width="89"
+            class="w-28 object-contain"
             {{-- height="58" --}}
             />
             @endforeach
@@ -141,14 +140,16 @@
         </div>
       </section>
 
-      <!-- LinkedIn Banner -->
-      <section class="linkedin-banner">
-        <div class="container linkedin-container">
-          <h2 class="linkedin-text">
+      <!-- SUPER QUOTE BANNER -->
+      <section class="linkedin-banner mt-5">
+        <div class="container">
+          <h2 class="text-center text-dark uppercase">
             {{ $webconfig['main_description'] }}
           </h2>
         </div>
       </section>
+
+
 
       <!-- Features Section -->
       <section class="features-section">
@@ -159,7 +160,7 @@
           <p class="about-subtitle">
            {{ $about['title'] }}
           </p>
-          <div class="about-description text-justify">
+          <div class="sm:w-full md:w-3/6 text-justify">
             {{ $about['description']  }}
           </div>
 
@@ -313,7 +314,7 @@
         <div class="container membership-container">
           <div class="membership-background-left">
             <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/asset_1_10x_6.webp"
+              src="{{ asset('asset/images/asset_1_10x_6.webp') }}"
               alt=""
               class="membership-bg-image"
               width="1225"
@@ -322,7 +323,7 @@
           </div>
           <div class="membership-background-right">
             <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/asset_1_10x_6.webp"
+              src="{{ asset('asset/images/asset_1_10x_6.webp') }}"
               alt=""
               class="membership-bg-image"
               width="1225"
@@ -331,57 +332,48 @@
           </div>
 
           <h2 class="membership-title">
-            <span class="highlight">Membership</span>
+            <span class="highlight">Benefit Membership</span>
             <span class="bold">
                 <img class="w-60" src="{{ asset('storage/'.$webconfig['logo']) }}" alt="" srcset="{{ asset('storage/'.$webconfig['logo']) }}">
             </span>
           </h2>
 
 
-<div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
-    @foreach ([
-        ['heading' => 'What is Flowbite?', 'content' => 'Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more. Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.'],
-        ['heading' => 'Is there a Figma file available?', 'content' => 'Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file. Check out the <a href="https://flowbite.com/figma/" class="text-blue-600 dark:text-blue-500 hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.'],
-        ['heading' => 'What are the differences between Flowbite and Tailwind UI?', 'content' => 'The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages. However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds. Learn more about these technologies: <ul class="ps-5 text-gray-500 list-disc dark:text-gray-400"><li><a href="https://flowbite.com/pro/" class="text-blue-600 dark:text-blue-500 hover:underline">Flowbite Pro</a></li><li><a href="https://tailwindui.com/" rel="nofollow" class="text-blue-600 dark:text-blue-500 hover:underline">Tailwind UI</a></li></ul>']
-    ] as $index => $item)
-    <h2 id="accordion-flush-heading-{{ $index }}">
-      <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-{{ $index }}" aria-expanded="false" aria-controls="accordion-flush-body-{{ $index }}">
-        <span>{{ $item['heading'] }}</span>
-        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0 transition-transform" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
-        </svg>
-      </button>
-    </h2>
-    <div id="accordion-flush-body-{{ $index }}" class="hidden" aria-labelledby="accordion-flush-heading-{{ $index }}">
-      <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-        {!! $item['content'] !!}
-      </div>
-    </div>
-    @endforeach
-</div>
+          <div class="max-w-xl mx-auto space-y-4">
+            <!-- Accordion Item -->
+            <div class="border border-gray-300 rounded-lg">
+              <button
+                class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-gray-800 bg-white hover:bg-gray-50"
+                onclick="toggleAccordion('accordion-1')"
+              >
+                <span>Section 1</span>
+                <svg class="w-5 h-5 transition-transform duration-200" id="icon-accordion-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div id="accordion-1" class="hidden px-4 py-3 bg-gray-50 text-gray-700">
+                This is the content for section 1.
+              </div>
+            </div>
 
-<script>
-  document.querySelectorAll('[data-accordion="collapse"]').forEach(accordion => {
-    accordion.querySelectorAll('button').forEach(button => {
-      button.addEventListener('click', () => {
-        const target = document.querySelector(button.getAttribute('data-accordion-target'));
-        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            <!-- Accordion Item 2 -->
+            <div class="border border-gray-300 rounded-lg">
+              <button
+                class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-gray-800 bg-white hover:bg-gray-50"
+                onclick="toggleAccordion('accordion-2')"
+              >
+                <span>Section 2</span>
+                <svg class="w-5 h-5 transition-transform duration-200" id="icon-accordion-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div id="accordion-2" class="hidden px-4 py-3 bg-gray-50 text-gray-700">
+                This is the content for section 2.
+              </div>
+            </div>
+          </div>
 
-        document.querySelectorAll('[id^="accordion-flush-body"]').forEach(body => {
-          if (body !== target) {
-            body.classList.add('hidden');
-            body.previousElementSibling.querySelector('svg[data-accordion-icon]').style.transform = 'rotate(0deg)';
-            body.previousElementSibling.setAttribute('aria-expanded', 'false');
-          }
-        });
 
-        target.classList.toggle('hidden', isExpanded);
-        button.setAttribute('aria-expanded', !isExpanded);
-        button.querySelector('svg[data-accordion-icon]').style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
-      });
-    });
-  });
-</script>
 
 
           <div class="membership-features">
@@ -474,49 +466,7 @@
       <!-- Pricing Cards Section -->
       <section class="pricing-section">
         <div class="container pricing-container">
-          {{-- <div class="pricing-card">
-            <h3 class="pricing-duration">6 Bulan</h3>
-            <p class="pricing-price">Rp 166.000</p>
-            <div class="pricing-action">
-              <form action="#" method="POST">
-                <button type="submit" class="btn btn-primary btn-full">
-                  Jadi Member
-                </button>
-              </form>
-            </div>
-            <div class="pricing-promo">
-              <div class="promo-icon">
-                <svg
-                  width="34"
-                  height="34"
-                  viewBox="0 0 34 34"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_654_120)">
-                    <path
-                      d="M4.24226 18.3848C4.05473 18.1973 3.94937 17.943 3.94937 17.6777C3.94937 17.4125 4.05473 17.1582 4.24226 16.9706L16.9702 4.24271C17.1577 4.05517 17.4121 3.94981 17.6773 3.94981C17.9425 3.94981 18.1969 4.05517 18.3844 4.24271L22.2735 8.13179C21.8046 8.60063 21.5413 9.23652 21.5413 9.89956C21.5413 10.5626 21.8046 11.1985 22.2735 11.6673C22.7423 12.1362 23.3782 12.3996 24.0413 12.3996C24.7043 12.3996 25.3402 12.1362 25.809 11.6673L29.6981 15.5564C29.8856 15.744 29.991 15.9983 29.991 16.2635C29.991 16.5287 29.8856 16.7831 29.6981 16.9706L16.9702 29.6985C16.7826 29.8861 16.5283 29.9914 16.2631 29.9914C15.9979 29.9914 15.7435 29.8861 15.556 29.6985L4.24226 18.3848ZM19.1516 24.6887C19.0173 24.4086 18.9733 24.0938 19.0255 23.7876C19.0778 23.4815 19.2239 23.1991 19.4435 22.9795C19.6631 22.7598 19.9455 22.6138 20.2517 22.5615C20.5578 22.5092 20.8727 22.5533 21.1527 22.6876L27.5768 16.2635L25.4781 14.1648C24.6837 14.4328 23.8302 14.4734 23.0139 14.2822C22.1975 14.0911 21.4509 13.6756 20.858 13.0828C20.2652 12.4899 19.8498 11.7433 19.6586 10.927C19.4674 10.1106 19.5081 9.25716 19.776 8.46272L17.6773 6.36403L11.2532 12.7881C11.3875 13.0682 11.4316 13.383 11.3793 13.6892C11.327 13.9953 11.181 14.2777 10.9614 14.4973C10.7417 14.717 10.4593 14.863 10.1532 14.9153C9.84702 14.9675 9.53217 14.9235 9.25211 14.7892L6.36358 17.6777L16.2631 27.5772L19.1516 24.6887ZM14.4953 18.0313C14.214 18.3126 13.8325 18.4706 13.4347 18.4706C13.0368 18.4706 12.6553 18.3126 12.374 18.0313C12.0927 17.75 11.9347 17.3685 11.9347 16.9706C11.9347 16.5728 12.0927 16.1913 12.374 15.91C12.6553 15.6287 13.0368 15.4706 13.4347 15.4706C13.8325 15.4706 14.214 15.6287 14.4953 15.91C14.7766 16.1913 14.9347 16.5728 14.9347 16.9706C14.9347 17.3685 14.7766 17.75 14.4953 18.0313ZM18.0308 21.5668C17.7495 21.8481 17.368 22.0062 16.9702 22.0062C16.5724 22.0062 16.1908 21.8481 15.9095 21.5668C15.6282 21.2855 15.4702 20.904 15.4702 20.5062C15.4702 20.1083 15.6282 19.7268 15.9095 19.4455C16.1908 19.1642 16.5724 19.0062 16.9702 19.0062C17.368 19.0062 17.7495 19.1642 18.0308 19.4455C18.3121 19.7268 18.4702 20.1083 18.4702 20.5062C18.4702 20.904 18.3121 21.2855 18.0308 21.5668Z"
-                      fill="#FFFFFF"
-                    ></path>
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_654_120">
-                      <rect
-                        width="24"
-                        height="24"
-                        fill="#FFFFFF"
-                        transform="translate(0 16.9707) rotate(-45)"
-                      ></rect>
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-              <p class="promo-text">Punya Kode Promo?</p>
-            </div>
-            <p class="pricing-note">*Pembayaran langsung</p>
-          </div> --}}
-
-          <div class="pricing-card pricing-card-featured">
+                 <div class="pricing-card pricing-card-featured w-2/6">
             <div class="pricing-badge">Best Value</div>
             <h3 class="pricing-duration">12 Bulan</h3>
             <p class="pricing-price">Rp 125.000</p>
@@ -561,55 +511,13 @@
             <p class="pricing-note">*Pembayaran langsung</p>
           </div>
 
-          {{-- <div class="pricing-card">
-            <h3 class="pricing-duration">3 Bulan</h3>
-            <p class="pricing-price">Rp 186.000</p>
-            <div class="pricing-action">
-              <form action="#" method="POST">
-                <button type="submit" class="btn btn-primary btn-full">
-                  Jadi Member
-                </button>
-              </form>
-            </div>
-            <div class="pricing-promo">
-              <div class="promo-icon">
-                <svg
-                  width="34"
-                  height="34"
-                  viewBox="0 0 34 34"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_654_120)">
-                    <path
-                      d="M4.24226 18.3848C4.05473 18.1973 3.94937 17.943 3.94937 17.6777C3.94937 17.4125 4.05473 17.1582 4.24226 16.9706L16.9702 4.24271C17.1577 4.05517 17.4121 3.94981 17.6773 3.94981C17.9425 3.94981 18.1969 4.05517 18.3844 4.24271L22.2735 8.13179C21.8046 8.60063 21.5413 9.23652 21.5413 9.89956C21.5413 10.5626 21.8046 11.1985 22.2735 11.6673C22.7423 12.1362 23.3782 12.3996 24.0413 12.3996C24.7043 12.3996 25.3402 12.1362 25.809 11.6673L29.6981 15.5564C29.8856 15.744 29.991 15.9983 29.991 16.2635C29.991 16.5287 29.8856 16.7831 29.6981 16.9706L16.9702 29.6985C16.7826 29.8861 16.5283 29.9914 16.2631 29.9914C15.9979 29.9914 15.7435 29.8861 15.556 29.6985L4.24226 18.3848ZM19.1516 24.6887C19.0173 24.4086 18.9733 24.0938 19.0255 23.7876C19.0778 23.4815 19.2239 23.1991 19.4435 22.9795C19.6631 22.7598 19.9455 22.6138 20.2517 22.5615C20.5578 22.5092 20.8727 22.5533 21.1527 22.6876L27.5768 16.2635L25.4781 14.1648C24.6837 14.4328 23.8302 14.4734 23.0139 14.2822C22.1975 14.0911 21.4509 13.6756 20.858 13.0828C20.2652 12.4899 19.8498 11.7433 19.6586 10.927C19.4674 10.1106 19.5081 9.25716 19.776 8.46272L17.6773 6.36403L11.2532 12.7881C11.3875 13.0682 11.4316 13.383 11.3793 13.6892C11.327 13.9953 11.181 14.2777 10.9614 14.4973C10.7417 14.717 10.4593 14.863 10.1532 14.9153C9.84702 14.9675 9.53217 14.9235 9.25211 14.7892L6.36358 17.6777L16.2631 27.5772L19.1516 24.6887ZM14.4953 18.0313C14.214 18.3126 13.8325 18.4706 13.4347 18.4706C13.0368 18.4706 12.6553 18.3126 12.374 18.0313C12.0927 17.75 11.9347 17.3685 11.9347 16.9706C11.9347 16.5728 12.0927 16.1913 12.374 15.91C12.6553 15.6287 13.0368 15.4706 13.4347 15.4706C13.8325 15.4706 14.214 15.6287 14.4953 15.91C14.7766 16.1913 14.9347 16.5728 14.9347 16.9706C14.9347 17.3685 14.7766 17.75 14.4953 18.0313ZM18.0308 21.5668C17.7495 21.8481 17.368 22.0062 16.9702 22.0062C16.5724 22.0062 16.1908 21.8481 15.9095 21.5668C15.6282 21.2855 15.4702 20.904 15.4702 20.5062C15.4702 20.1083 15.6282 19.7268 15.9095 19.4455C16.1908 19.1642 16.5724 19.0062 16.9702 19.0062C17.368 19.0062 17.7495 19.1642 18.0308 19.4455C18.3121 19.7268 18.4702 20.1083 18.4702 20.5062C18.4702 20.904 18.3121 21.2855 18.0308 21.5668Z"
-                      fill="#FFFFFF"
-                    ></path>
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_654_120">
-                      <rect
-                        width="24"
-                        height="24"
-                        fill="#FFFFFF"
-                        transform="translate(0 16.9707) rotate(-45)"
-                      ></rect>
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-              <p class="promo-text">Punya Kode Promo?</p>
-            </div>
-            <p class="pricing-note">*Pembayaran langsung</p>
-          </div> --}}
-
         </div>
       </section>
 
       <!-- Quote Section -->
 
       @foreach ($quotes as $quote)
-            <section class="{{ $quote->quoted_by !='hadis'?'quote-section':'text-center'}}">
+            <div class="{{ $quote->quoted_by !='hadis'?'quote-section':'text-center'}}">
                 <div class="container ">
                 <div class="{{ $quote->quoted_by !='hadis'?'quote-container':'container'}}">
                     <div class="{{ $quote->quoted_by !='hadis'?'quote-image-container':'disabled'}}">
@@ -633,7 +541,7 @@
 
                 </div>
             </div>
-        </section>
+        </div>
         @endforeach
 
       <!-- Testimonials Section -->

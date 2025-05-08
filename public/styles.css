@@ -807,7 +807,7 @@
     }
 
     .partners-grid-top,
-    .partners-grid-bottom {
+    .linkedin-text {
       width: 100%;
       grid-template-columns: repeat(4, 1fr);
     }
