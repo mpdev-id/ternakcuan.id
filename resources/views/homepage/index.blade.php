@@ -317,7 +317,7 @@
               src="{{ asset('asset/images/asset_1_10x_6.webp') }}"
               alt=""
               class="membership-bg-image"
-              width="1225"
+              width="1725"
               height="1225"
             />
           </div>
@@ -332,13 +332,13 @@
           </div>
 
           <h2 class="membership-title">
-            <span class="highlight">Benefit Membership</span>
-            <span class="bold">
-                <img class="w-60" src="{{ asset('storage/'.$webconfig['logo']) }}" alt="" srcset="{{ asset('storage/'.$webconfig['logo']) }}">
-            </span>
+            <span >Meta Ads</span>
+            {{-- <span class="bold">
+                <img class="w-24" src="{{ asset('storage/'.$webconfig['logo']) }}" alt="" srcset="{{ asset('storage/'.$webconfig['logo']) }}">
+            </span> --}}
           </h2>
 
-
+{{--
           <div class="max-w-xl mx-auto space-y-4">
             <!-- Accordion Item -->
             <div class="border border-gray-300 rounded-lg">
@@ -371,7 +371,9 @@
                 This is the content for section 2.
               </div>
             </div>
-          </div>
+          </div> --}}
+
+          <h2>Naikkan Penjualan dengan Iklan Meta Ads Tertarget!</h2>
 
 
 
