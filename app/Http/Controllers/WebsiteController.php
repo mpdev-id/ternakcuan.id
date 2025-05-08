@@ -16,7 +16,8 @@ class WebsiteController extends Controller
             'quotes' => \App\Models\Quote::all(),
             'copywriting' => \App\Models\CopyWriting::first(),
             'seo'=> \App\Models\Seo::first(),
-            'webconfig' => \App\Models\WebConfig::first()
+            'webconfig' => \App\Models\WebConfig::first(),
+            'benefits' =>\App\Models\Benefit::all(),
         ]);
  }
 }

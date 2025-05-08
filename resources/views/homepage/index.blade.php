@@ -55,7 +55,7 @@
             <a href="https://ternakuang.id/#pricing" class="btn btn-primary"
               >Jadi Member</a
             >
-            <a href="https://ternakuang.id/#" class="btn btn-outline">Login</a>
+            {{-- <a href="https://ternakuang.id/#" class="btn btn-outline">Login</a> --}}
           </nav>
         </div>
       </header>
@@ -113,26 +113,24 @@
 
       <section class="container">
         <div class="flex flex-col items-center justify-center gap-5">
-          <div class="flex gap-5">
+          <div class="flex gap-8">
            @foreach ($partners->where('type', 'agregator') as $agregator)
 
            <img
            src="{{ asset('storage/'.$agregator['logo']) }}"
            alt="{{ $agregator['name'] }} logo"
-           class="w-24 object-contain"
-           {{-- height="58" --}}
+           class="w-16 object-contain"
            />
            @endforeach
           </div>
 
-          <div class="flex gap-5">
+          <div class="flex gap-8">
             @foreach ($partners->where('type', 'ekspedisi') as $ekspedisi)
 
             <img
             src="{{ asset('storage/'.$ekspedisi['logo']) }}"
             alt="{{ $ekspedisi['name'] }} logo"
-            class="w-28 object-contain"
-            {{-- height="58" --}}
+            class="w-20 object-contain"
             />
             @endforeach
           </div>
@@ -163,48 +161,8 @@
           <div class="sm:w-full md:w-3/6 text-justify">
             {{ $about['description']  }}
           </div>
-
-
-
         </div>
       </section>
-
-      <!-- Mission Section -->
-      {{-- <section class="mission-section">
-        <div class="container mission-container">
-          <div class="mission-image-container">
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/imagehh.webp"
-              alt="Mission illustration"
-              class="mission-image"
-              width="1076"
-              height="718"
-            />
-          </div>
-          <div class="mission-content">
-            <h2 class="mission-title">Dalam misi mencetak 10 juta</h2>
-            <div class="mission-text">
-              <p>
-                Ternak Cuan dibangun untuk membantu masyarakat Indonesia untuk
-                lebih "melek" secara finansial. Fokus pertama yaitu
-              </p>
-              <p>
-                Dengen sadarnya finansial kami yakin semua lulusan Ternak Cuan
-                akan bisa berinvestasi dan profit besar dalam jangka waktu
-                panjang.
-              </p>
-              <p>-Ternak Cuan Founder.</p>
-            </div>
-            <img
-              src="https://ternakuang.id/wp-content/uploads/2024/12/TERNAKUANG.svg"
-              alt="Ternak Cuan"
-              class="mission-logo"
-              width="196"
-              height="18"
-            />
-          </div>
-        </div>
-      </section> --}}
 
       <!-- Benefits Section -->
       <section class="benefits-section">
@@ -310,210 +268,127 @@
       </section>
 
       <!-- Membership Section -->
-      <section id="pricing" class="membership-section">
+   <section id="pricing" class="membership-section">
         <div class="container membership-container">
-          <div class="membership-background-left">
-            <img
-              src="{{ asset('asset/images/asset_1_10x_6.webp') }}"
-              alt=""
-              class="membership-bg-image"
-              width="1725"
-              height="1225"
-            />
-          </div>
-          <div class="membership-background-right">
-            <img
-              src="{{ asset('asset/images/asset_1_10x_6.webp') }}"
-              alt=""
-              class="membership-bg-image"
-              width="1225"
-              height="1225"
-            />
-          </div>
+            {{-- <div class="membership-background-left">
+                <img src="{{ asset('asset/images/asset_1_10x_6.webp') }}" alt=""
+                    class="membership-bg-image" width="1725" height="1225" />
+            </div>
+            <div class="membership-background-right">
+                <img src="{{ asset('asset/images/asset_1_10x_6.webp') }}" alt=""
+                    class="membership-bg-image" width="1225" height="1225" />
+            </div> --}}
 
-          <h2 class="membership-title">
-            <span >Meta Ads</span>
-            {{-- <span class="bold">
-                <img class="w-24" src="{{ asset('storage/'.$webconfig['logo']) }}" alt="" srcset="{{ asset('storage/'.$webconfig['logo']) }}">
-            </span> --}}
-          </h2>
+            <h2 class="membership-title">
+                <span>Meta Ads</span>
+                {{-- <span class="bold">
+                    <img class="w-24" src="{{ asset('storage/'.$webconfig['logo']) }}" alt=""
+                        srcset="{{ asset('storage/'.$webconfig['logo']) }}">
+                </span> --}}
+            </h2>
 
-{{--
-          <div class="max-w-xl mx-auto space-y-4">
-            <!-- Accordion Item -->
-            <div class="border border-gray-300 rounded-lg">
-              <button
-                class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-gray-800 bg-white hover:bg-gray-50"
-                onclick="toggleAccordion('accordion-1')"
-              >
-                <span>Section 1</span>
-                <svg class="w-5 h-5 transition-transform duration-200" id="icon-accordion-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div id="accordion-1" class="hidden px-4 py-3 bg-gray-50 text-gray-700">
-                This is the content for section 1.
-              </div>
+
+            <p class="h-10 bold text-center text-xl">
+                🚀 Naikkan Penjualan dengan Iklan Meta Ads yang Tertarget!
+            </p>
+            <div class="sm:w-full md:w-3/6 text-justify">
+                Mau bisnismu tampil di depan ribuan calon pembeli di Facebook & Instagram?
+                <strong>Ternak Cuan Digital Marketing</strong> siap bantu kamu tembus pasar dengan
+                <strong>strategi Meta Ads yang terbukti menghasilkan!</strong>
+            </div>
+            <h2 class="text-2xl">Apa yang kamu dapatkan?</h2>
+
+
+
+                <div class="space-y-2">
+                    @foreach ($benefits as $item)
+                        <div class="bg-zinc-900 text-white rounded-xl p-4 shadow-lg transition hover:shadow-2xl border border-zinc-700">
+                            <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left">
+                                <div class="flex items-start gap-4">
+                                    <div class="flex-shrink-0 mt-1">
+                                        <svg aria-hidden="true" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
+                                        class="feature-icon">
+                                        <path
+                                            d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                        </path>
+                                    </svg>
+                                    </div>
+                                    <span class="text-lg font-semibold">{{ $item->title }}</span>
+                                </div>
+
+                                <svg class="w-5 h-5 transition-transform duration-300 ease-in-out text-[{{ $webconfig['main_color'] ?? '#75f991' }}]"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+
+                            <div class="mt-3 hidden text-sm text-gray-300 transition-all duration-300 ease-in-out">
+                                <p>{{ $item->description }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <script>
+                    function toggleAccordion(button) {
+                        const content = button.nextElementSibling;
+                        const icon = button.querySelector('svg:last-of-type');
+
+                        const isHidden = content.classList.contains('hidden');
+                        content.classList.toggle('hidden');
+                        icon.classList.toggle('rotate-180', isHidden);
+                    }
+                </script>
+
             </div>
 
-            <!-- Accordion Item 2 -->
-            <div class="border border-gray-300 rounded-lg">
-              <button
-                class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-gray-800 bg-white hover:bg-gray-50"
-                onclick="toggleAccordion('accordion-2')"
-              >
-                <span>Section 2</span>
-                <svg class="w-5 h-5 transition-transform duration-200" id="icon-accordion-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div id="accordion-2" class="hidden px-4 py-3 bg-gray-50 text-gray-700">
-                This is the content for section 2.
-              </div>
-            </div>
-          </div> --}}
-
-          <h2>Naikkan Penjualan dengan Iklan Meta Ads Tertarget!</h2>
 
 
-
-
-          <div class="membership-features">
-            <ul class="membership-features-list">
-              <li class="membership-feature-item">
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 512 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="feature-icon"
-                >
-                  <path
-                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-                  ></path>
-                </svg>
-                <span>Akses 40+ Video Academy Ternak Cuan</span>
-              </li>
-              <li class="membership-feature-item">
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 512 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="feature-icon"
-                >
-                  <path
-                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-                  ></path>
-                </svg>
-                <span>Download materi rangkuman course</span>
-              </li>
-              <li class="membership-feature-item">
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 512 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="feature-icon"
-                >
-                  <path
-                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-                  ></path>
-                </svg>
-                <span>Komunitas Member Premium</span>
-              </li>
-            </ul>
-            <ul class="membership-features-list">
-              <li class="membership-feature-item">
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 512 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="feature-icon"
-                >
-                  <path
-                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-                  ></path>
-                </svg>
-                <span>Special Price kelas live & merchandise</span>
-              </li>
-              <li class="membership-feature-item">
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 512 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="feature-icon"
-                >
-                  <path
-                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-                  ></path>
-                </svg>
-                <span>Akses Hasil Analisa Emiten Pilihan</span>
-              </li>
-              <li class="membership-feature-item">
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 512 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="feature-icon"
-                >
-                  <path
-                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-                  ></path>
-                </svg>
-                <span>Ikuti Kelas Live rutin setiap bulan</span>
-              </li>
-            </ul>
-          </div>
         </div>
-      </section>
+    </section>
 
       <!-- Pricing Cards Section -->
-      <section class="pricing-section">
-        <div class="container pricing-container">
-                 <div class="pricing-card pricing-card-featured w-2/6">
-            <div class="pricing-badge">Best Value</div>
-            <h3 class="pricing-duration">12 Bulan</h3>
-            <p class="pricing-price">Rp 125.000</p>
-            <p class="pricing-save-label">Hemat</p>
-            <p class="pricing-save-amount">Rp 1.224.000,-</p>
-            <div class="pricing-action">
-              <form action="#" method="POST">
-                <button type="submit" class="btn btn-primary btn-full">
-                  Jadi Member
-                </button>
-              </form>
-            </div>
-            <div class="pricing-promo">
-              <div class="promo-icon">
-                <svg
-                  width="34"
-                  height="34"
-                  viewBox="0 0 34 34"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_654_120)">
-                    <path
-                      d="M4.24226 18.3848C4.05473 18.1973 3.94937 17.943 3.94937 17.6777C3.94937 17.4125 4.05473 17.1582 4.24226 16.9706L16.9702 4.24271C17.1577 4.05517 17.4121 3.94981 17.6773 3.94981C17.9425 3.94981 18.1969 4.05517 18.3844 4.24271L22.2735 8.13179C21.8046 8.60063 21.5413 9.23652 21.5413 9.89956C21.5413 10.5626 21.8046 11.1985 22.2735 11.6673C22.7423 12.1362 23.3782 12.3996 24.0413 12.3996C24.7043 12.3996 25.3402 12.1362 25.809 11.6673L29.6981 15.5564C29.8856 15.744 29.991 15.9983 29.991 16.2635C29.991 16.5287 29.8856 16.7831 29.6981 16.9706L16.9702 29.6985C16.7826 29.8861 16.5283 29.9914 16.2631 29.9914C15.9979 29.9914 15.7435 29.8861 15.556 29.6985L4.24226 18.3848ZM19.1516 24.6887C19.0173 24.4086 18.9733 24.0938 19.0255 23.7876C19.0778 23.4815 19.2239 23.1991 19.4435 22.9795C19.6631 22.7598 19.9455 22.6138 20.2517 22.5615C20.5578 22.5092 20.8727 22.5533 21.1527 22.6876L27.5768 16.2635L25.4781 14.1648C24.6837 14.4328 23.8302 14.4734 23.0139 14.2822C22.1975 14.0911 21.4509 13.6756 20.858 13.0828C20.2652 12.4899 19.8498 11.7433 19.6586 10.927C19.4674 10.1106 19.5081 9.25716 19.776 8.46272L17.6773 6.36403L11.2532 12.7881C11.3875 13.0682 11.4316 13.383 11.3793 13.6892C11.327 13.9953 11.181 14.2777 10.9614 14.4973C10.7417 14.717 10.4593 14.863 10.1532 14.9153C9.84702 14.9675 9.53217 14.9235 9.25211 14.7892L6.36358 17.6777L16.2631 27.5772L19.1516 24.6887ZM14.4953 18.0313C14.214 18.3126 13.8325 18.4706 13.4347 18.4706C13.0368 18.4706 12.6553 18.3126 12.374 18.0313C12.0927 17.75 11.9347 17.3685 11.9347 16.9706C11.9347 16.5728 12.0927 16.1913 12.374 15.91C12.6553 15.6287 13.0368 15.4706 13.4347 15.4706C13.8325 15.4706 14.214 15.6287 14.4953 15.91C14.7766 16.1913 14.9347 16.5728 14.9347 16.9706C14.9347 17.3685 14.7766 17.75 14.4953 18.0313ZM18.0308 21.5668C17.7495 21.8481 17.368 22.0062 16.9702 22.0062C16.5724 22.0062 16.1908 21.8481 15.9095 21.5668C15.6282 21.2855 15.4702 20.904 15.4702 20.5062C15.4702 20.1083 15.6282 19.7268 15.9095 19.4455C16.1908 19.1642 16.5724 19.0062 16.9702 19.0062C17.368 19.0062 17.7495 19.1642 18.0308 19.4455C18.3121 19.7268 18.4702 20.1083 18.4702 20.5062C18.4702 20.904 18.3121 21.2855 18.0308 21.5668Z"
-                      fill="#FFFFFF"
-                    ></path>
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_654_120">
-                      <rect
-                        width="24"
-                        height="24"
-                        fill="#FFFFFF"
-                        transform="translate(0 16.9707) rotate(-45)"
-                      ></rect>
-                    </clipPath>
-                  </defs>
-                </svg>
+
+      <section class="">
+
+        <div class="min-h-screen bg-black flex items-center justify-center px-4">
+            <div class="max-w-sm w-full rounded-xl p-6 bg-black text-white relative text-center"
+                 style="border: 2px solid {{ $webconfig['main_color'] ?? '#75f991' }}">
+
+              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 rounded-full text-sm font-semibold"
+                   style="background-color: {{ $webconfig['main_color'] ?? '#75f991' }}; color: black;">
+                Best Value
               </div>
-              <p class="promo-text">Punya Kode Promo?</p>
+
+              <h3 class="text-3xl font-extrabold mt-6">12 Bulan</h3>
+              <p class="text-xl">
+                Rp <span class="font-bold">125.000</span><span class="text-gray-400">/bulan</span>
+              </p>
+              <p class="mt-2 font-bold text-xl"
+                 style="color: {{ $webconfig['main_color'] ?? '#75f991' }}">
+                 Hemat<br>Rp 1.224.000,-
+              </p>
+
+              <button class="text-black font-bold py-2 px-6 rounded-lg mt-6 hover:opacity-90"
+                      style="background-color: {{ $webconfig['main_color'] ?? '#75f991' }}">
+                Jadi Member
+              </button>
+
+              <p class="text-sm text-gray-400 mt-4 flex items-center justify-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-3 -3v6m9-9a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Punya Kode Promo?
+              </p>
+              <p class="text-xs text-gray-400 mt-2">*Pembayaran langsung<br>12 bulan di depan</p>
             </div>
-            <p class="pricing-note">*Pembayaran langsung</p>
           </div>
 
-        </div>
+
+
+
       </section>
 
       <!-- Quote Section -->
@@ -549,7 +424,7 @@
       <!-- Testimonials Section -->
       <section class="testimonials-section">
         <div class="container testimonials-container">
-          <h2 class="section-title">Apa Kata</h2>
+          <h2 class="section-title">Apa Kata Mereka</h2>
 
           <div class="testimonials-grid">
             <div class="testimonial-card">
