@@ -59,6 +59,9 @@ class SeoResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('og_image')
                     ->image()
+                    ->imageEditor()
+                    ->maxSize(1024)
+                    ->columnSpanFull()
                     ->required(),
                 Forms\Components\TextInput::make('twitter_title')
                     ->required()
@@ -68,6 +71,9 @@ class SeoResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('twitter_image')
                     ->image()
+                    ->imageEditor()
+                    ->maxSize(1024)
+                    ->columnSpanFull()
                     ->required(),
             ]);
     }

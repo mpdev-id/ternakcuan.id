@@ -25,6 +25,8 @@ class QuoteResource extends Resource
             ->schema([
                 Forms\Components\FileUpload::make('image')
                 ->columnSpanFull()
+                ->imageEditor()
+                ->maxSize(1024)
                     ->image(),
                 Forms\Components\TextInput::make('quote')
                 ->columnSpanFull()

@@ -19,6 +19,8 @@ class WebConfigResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Website Setting';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -26,12 +28,14 @@ class WebConfigResource extends Resource
                 Forms\Components\FileUpload::make('logo')
                     ->acceptedFileTypes(['image/*'])
                     ->image()
-                    ->maxSize(1024)
+                    ->maxSize(2024)
+                    ->imageEditor()
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('favicon')
                     ->acceptedFileTypes(['image/ico', 'image/png'])
                     ->image()
                     ->maxSize(1024)
+                    ->imageEditor()
                     ->columnSpanFull()
                     ->default('https://ternakcuan.id/asset/favicon.ico')
                     ,
@@ -91,9 +95,9 @@ class WebConfigResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('logo')
+                Tables\Columns\ImageColumn::make('logo')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('favicon')
+                Tables\Columns\ImageColumn::make('favicon')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
@@ -102,7 +106,7 @@ class WebConfigResource extends Resource
                 Tables\Columns\TextColumn::make('main_address')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('main_color')
-                    ->searchable(),
+                    ->formatStateUsing(fn (string $state): string => '<span class="inline-block w-4 h-4 rounded-full" style="background-color: ' . $state . '"></span>'),
                 Tables\Columns\TextColumn::make('main_description')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('phone')
@@ -152,8 +156,8 @@ class WebConfigResource extends Resource
     {
         return [
             'index' => Pages\ListWebConfigs::route('/'),
-            'create' => Pages\CreateWebConfig::route('/create'),
-            'edit' => Pages\EditWebConfig::route('/{record}/edit'),
+            // 'create' => Pages\CreateWebConfig::route('/create'),
+            // 'edit' => Pages\EditWebConfig::route('/{record}/edit'),
         ];
     }
 }

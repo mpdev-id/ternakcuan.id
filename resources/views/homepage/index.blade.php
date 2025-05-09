@@ -18,6 +18,8 @@
     <link rel="shortcut icon" href="{{ url('storage/'.$webconfig['favicon']) }}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ url('storage/'.$webconfig['favicon']) }}">
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
@@ -27,7 +29,8 @@
 <style>
         :root {
           --maincolor: {{ $webconfig['main_color'] }};
-          font-family: 'Poppins', sans-serif; !important
+          font-family: 'Poppins', sans-serif !important;
+          scroll-behavior: smooth;
         }
 
         /* h2{
@@ -43,16 +46,16 @@
             <a href="{{ $seo['meta_canonical'] }}" class="logo-link">
               <img
                 src="{{ url('storage/'.$webconfig['logo']) }}"
-                alt="Ternak Cuan Logo"
+                alt="{{ __('Ternak Cuan Logo') }}"
                 width="180"
                 height="180"
-                class="logo-image rounded-xl"
+                class="logo-image rounded-2xl"
               />
               {{-- {{ $seo['meta_title'] }} --}}
             </a>
           </div>
           <nav class="main-nav">
-            <a href="https://ternakuang.id/#pricing" class="btn btn-primary"
+            <a href="{{ $copywriting['CTAlink'] }}" class="btn btn-primary z-40"
               >Jadi Member</a
             >
             {{-- <a href="https://ternakuang.id/#" class="btn btn-outline">Login</a> --}}
@@ -70,14 +73,15 @@
             <p class="hero-subtitle">
                 {{ $copywriting['subheadline']}}
             </p>
+
             <a
-              href="{{ $copywriting['CTALink']}}"
+              href="{{ $copywriting['CTAlink'] }}"
               class="btn btn-primary btn-large"
               >{{ $copywriting['CTAButton'] }}</a
             >
           </div>
 
-          <div class="hero-background">
+          <div class="hero-background -z-20">
             <img
               src="{{ asset('asset/images/asset_1_10x_6.webp') }}"
               alt=""
@@ -87,9 +91,10 @@
             />
           </div>
 
-          <div class="hero-video-container">
-            @if (pathinfo($copywriting['company_video'], PATHINFO_EXTENSION) === 'mp4')
+          <div class="hero-video-container gap-5 z-10">
+            {{-- @if (pathinfo($copywriting['company_video'], PATHINFO_EXTENSION) === 'mp4') --}}
               <video
+                {{-- src="https://ternakuang.id/wp-content/uploads/2024/12/video-33.mp4" --}}
                 src="{{ $copywriting['company_video'] }}"
                 autoplay
                 loop
@@ -98,39 +103,39 @@
                 controlslist="nodownload"
                 class="hero-video"
               ></video>
-            @else
+            {{-- @else
               <img
                 src="{{ $copywriting['company_video'] }}"
                 alt="Hero Image"
                 class="hero-image"
               />
-            @endif
+            @endif --}}
           </div>
         </div>
       </section>
 
       <!-- Partners Section -->
 
-      <section class="container">
-        <div class="flex flex-col items-center justify-center gap-5">
-          <div class="flex gap-8">
+      <section class="container my-20">
+        <div class="md:flex md:flex-col md:items-center md:justify-center md:gap-8 filter grayscale sm:flex sm:flex-row sm:items-center sm:gap-4">
+          <div class="flex gap-6">
            @foreach ($partners->where('type', 'agregator') as $agregator)
 
            <img
            src="{{ asset('storage/'.$agregator['logo']) }}"
            alt="{{ $agregator['name'] }} logo"
-           class="w-16 object-contain"
+           class="w-20 object-scale-down"
            />
            @endforeach
           </div>
 
-          <div class="flex gap-8">
+          <div class="flex gap-6">
             @foreach ($partners->where('type', 'ekspedisi') as $ekspedisi)
 
             <img
             src="{{ asset('storage/'.$ekspedisi['logo']) }}"
             alt="{{ $ekspedisi['name'] }} logo"
-            class="w-20 object-contain"
+            class="w-20 object-scale-down"
             />
             @endforeach
           </div>
@@ -139,9 +144,9 @@
       </section>
 
       <!-- SUPER QUOTE BANNER -->
-      <section class="linkedin-banner mt-5">
+      <section class="linkedin-banner">
         <div class="container">
-          <h2 class="text-center text-dark uppercase">
+          <h2 class="text-center text-dark ">
             {{ $webconfig['main_description'] }}
           </h2>
         </div>
@@ -268,7 +273,7 @@
       </section>
 
       <!-- Membership Section -->
-   <section id="pricing" class="membership-section">
+   <section id="join" class="membership-section">
         <div class="container membership-container">
             {{-- <div class="membership-background-left">
                 <img src="{{ asset('asset/images/asset_1_10x_6.webp') }}" alt=""
@@ -291,7 +296,7 @@
             <p class="h-10 bold text-center text-xl">
                 🚀 Naikkan Penjualan dengan Iklan Meta Ads yang Tertarget!
             </p>
-            <div class="sm:w-full md:w-3/6 text-justify">
+            <div class="sm:w-full md:w-4/6 text-justify">
                 Mau bisnismu tampil di depan ribuan calon pembeli di Facebook & Instagram?
                 <strong>Ternak Cuan Digital Marketing</strong> siap bantu kamu tembus pasar dengan
                 <strong>strategi Meta Ads yang terbukti menghasilkan!</strong>
@@ -302,7 +307,7 @@
 
                 <div class="space-y-2">
                     @foreach ($benefits as $item)
-                        <div class="bg-zinc-900 text-white rounded-xl p-4 shadow-lg transition hover:shadow-2xl border border-zinc-700">
+                        <div class="bg-zinc-900 text-white rounded-xl p-4 shadow-lg transition hover:shadow-2xl border border-zinc-700" style="max-width: 475px !important;">
                             <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left">
                                 <div class="flex items-start gap-4">
                                     <div class="flex-shrink-0 mt-1">
@@ -324,7 +329,7 @@
                                 </svg>
                             </button>
 
-                            <div class="mt-3 hidden text-sm text-gray-300 transition-all duration-300 ease-in-out">
+                            <div class="pl-10 mt-3 hidden text-sm text-gray-300 transition-all duration-300 ease-in-out">
                                 <p>{{ $item->description }}</p>
                             </div>
                         </div>
@@ -422,83 +427,149 @@
         @endforeach
 
       <!-- Testimonials Section -->
-      <section class="testimonials-section">
-        <div class="container testimonials-container">
-          <h2 class="section-title">Apa Kata Mereka</h2>
-
-          <div class="testimonials-grid">
-            <div class="testimonial-card">
-              <img
-                src="https://ternakuang.id/wp-content/uploads/2024/12/rectangle_2460.webp"
-                alt="Testimonial"
-                class="testimonial-image"
-                width="622"
-                height="349"
-              />
-              <p class="testimonial-text">
-                Berkat belajar di Ternak Cuan, saya sudah bisa membantu orang
-                tua melunasi cicilan, beli hal2 yang saya ingin seperti sepatu
-                dan gadget, dan mencapai 50 juta pertama saya di umur 14.
-              </p>
-              <p class="testimonial-author">Clifferd Oswaldo</p>
-            </div>
-
-            <div class="testimonial-card">
-              <img
-                src="https://ternakuang.id/wp-content/uploads/2024/12/mask_group2.webp"
-                alt="Testimonial"
-                class="testimonial-image"
-                width="622"
-                height="349"
-              />
-              <p class="testimonial-text">
-                Dari hasil investasi, saya sudah bisa beli motor R15. Thank you
-                Ternak Cuan buat ilmunya! Salam Cuan ☺️
-              </p>
-              <p class="testimonial-author">Andreas Vivaldi Wong</p>
-            </div>
-
-            <div class="testimonial-card">
-              <img
-                src="https://ternakuang.id/wp-content/uploads/2024/12/rectangle_2460h.webp"
-                alt="Testimonial"
-                class="testimonial-image"
-                width="622"
-                height="349"
-              />
-              <p class="testimonial-text">
-                Porto gua dulu minus sampe 20%++ karna slalu ikut2an. Sejak ikut
-                Ternak Cuan, gua mulai bisa analisa dan atur psikologis. Skarang
-                porto gua udah mulai pulih & bisa bikin plan kapan harus
-                beli/jual, ga fomo lgi.
-              </p>
-              <p class="testimonial-author">Audrey Celia</p>
-            </div>
+      <section class="testimonials-section container">
+        <div class="swiper-container overflow-hidden">
+          <div class="swiper-wrapper">
+            @foreach ($testimonies as $testimonial)
+              <div class="swiper-slide">
+                <div class="rounded-lg shadow-md p-6 h-96">
+                  <img src="{{ $testimonial->image ? url('storage/'.$testimonial->image) : 'https://via.placeholder.com/800x200' }}" alt="Testimonial" class="w-full h-44 object-cover rounded-t-lg">
+                  <p class="mt-6 ">{{ $testimonial->quote }}</p>
+                  <div class="mt-4 flex justify-start items-center">
+                    <p class="font-bold">{{ $testimonial->quoted_by }}</p>
+                  </div>
+                </div>
+              </div>
+            @endforeach
           </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+          <!-- Add Navigation -->
+          {{-- <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div> --}}
         </div>
+
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            var swiper = new Swiper('.swiper-container', {
+              slidesPerView: 'auto',
+              spaceBetween: 20,
+              loop: true,
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
+            //   navigation: {
+            //     nextEl: '.swiper-button-next',
+            //     prevEl: '.swiper-button-prev',
+            //   },
+              breakpoints: {
+                1024: {
+                  slidesPerView: 3,
+                },
+                768: {
+                  slidesPerView: 2,
+                },
+                640: {
+                  slidesPerView: 1,
+                },
+                320: {
+                  slidesPerView: 1,
+                },
+              },
+            });
+          });
+        </script>
+      </section>
+
+      <section class="container md:w-3/5 w-full p-6 rounded-lg shadow-md mt-60 md:mt-60">
+        <h3 class="mailer-title text-3xl font-bold text-white tracking-wide leading-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Yuk, Mulai Ternak Cuan Hari Ini!</h3>
+        <p class="mailer-text text-gray-400">Hubungi tim kami untuk pertanyaan, kerjasama, atau sekadar ngobrol santai soal digital marketing.</p>
+        <form action="#" method="POST">
+          @csrf
+          <div class="form-group mb-6">
+            <label for="name" class="block text-white text-sm font-bold mb-2">Nama</label>
+            <input type="text" name="name" id="name" class="form-control block w-full px-4 py-2 text-gray-700 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 @error('name') border-red-500 @enderror" value="{{ old('name') }}" required>
+            @error('name')
+              <span class="text-red-500 text-sm" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+            @enderror
+          </div>
+          <div class="form-group mb-6">
+            <label for="email" class="block text-white text-sm font-bold mb-2">Email</label>
+            <input type="email" name="email" id="email" class="form-control block w-full px-4 py-2 text-gray-700 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 @error('email') border-red-500 @enderror" value="{{ old('email') }}" required>
+            @error('email')
+              <span class="text-red-500 text-sm" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+            @enderror
+          </div>
+          <div class="form-group mb-6">
+            <label for="message" class="block text-white text-sm font-bold mb-2">Pesan</label>
+            <textarea name="message" id="message" class="form-control block w-full px-4 py-2 text-gray-700 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 @error('message') border-red-500 @enderror" required>{{ old('message') }}</textarea>
+            @error('message')
+              <span class="text-red-500 text-sm" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+            @enderror
+          </div>
+          <button type="submit" class="bg-gray-900  inline-flex items-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:ring-primary active:bg-primary-700 transition ease-in-out duration-150">
+            Kirim Pesan
+          </button>
+        </form>
       </section>
 
       <!-- Footer -->
       <footer class="main-footer">
-        <div class="container footer-container">
-          <div class="footer-info">
-            <h3 class="footer-title">PT. SAHABAT DWIKARYA DIGITAL</h3>
-            <p class="footer-address">
-              RUKO GRAHA KENCANA BLOK A, Jl. RAYA PERJUANGAN NO. 88,
-              Desa/Kelurahan Kebon Jeruk, Kec. Kebon Jeruk, Kota Adm. Jakarta
-              Barat, Provinsi DKI Jakarta, Kode Pos 11530
+        <div class="flex items-center justify-between container w-10/12 p-20">
+
+          <div class="gap-5 py-10">
+            <h3 class="footer-title">{{ $webconfig['main_title'] }}</h3>
+            <p class="footer-address my-5">
+                {{$webconfig['main_address']}}
             </p>
-            <p class="footer-cs">CS :</p>
-            <div class="footer-social">
+            <p class="footer-cs text-sm font-medium leading-5 text-white/85">CS : <a href="mailto:{{ $webconfig['email'] }}">{{ $webconfig['email'] }}</a></p>
+            <div class="footer-social my-5">
               <p class="social-title">Ikuti Kami :</p>
-              <!-- Social media icons would go here -->
+
+              @if (!is_null($webconfig['facebook']))
+                <a href="https://www.facebook.com/{{ $webconfig['facebook'] }}" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{ $webconfig['main_color'] }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><circle cx="12" cy="12" r="10"></circle><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-3V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+              @endif
+              @if (!is_null($webconfig['instagram']))
+                <a href="https://www.instagram.com/{{ $webconfig['instagram'] }}" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{ $webconfig['main_color'] }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+              @endif
+              @if (!is_null($webconfig['twitter']))
+                <a href="https://www.twitter.com/{{ $webconfig['twitter'] }}" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{ $webconfig['main_color'] }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-1.25A4.38 4.38 0 0 0 23 3z"></path></svg>
+                </a>
+              @endif
+              @if (!is_null($webconfig['linkedin']))
+                <a href="https://www.linkedin.com/in/{{ $webconfig['linkedin'] }}" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{ $webconfig['main_color'] }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><rect x="4.3" y="3.3" width="3" height="12"></rect><line x1="8" y1="3.3" x2="19" y2="3.3"></line><line x1="8" y1="9.3" x2="19" y2="9.3"></line><line x1="8" y1="15.3" x2="10.3" y2="15.3"></line><line x1="12" y1="3.3" x2="12" y2="21.3"></line></svg>
+                </a>
+              @endif
+              @if (!is_null($webconfig['youtube']))
+                <a href="https://www.youtube.com/channel/{{ $webconfig['youtube'] }}" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{ $webconfig['main_color'] }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube"><rect x="3" y="3" width="18" height="18" rx="4" ry="4"></rect><path d="M15 3h6v18H15zM10 8.25L6 12.25l4 4V8.25zM16 8.25l-4 4V8.25z"></path></svg>
+                </a>
+              @endif
+
+
             </div>
           </div>
-          <div class="footer-links">
+
+          <div class="gap-5">
             <h3 class="footer-title">Bantuan & Panduan</h3>
-            <p class="footer-link">Syarat & Ketentuan</p>
-            <p class="footer-link">Kebijakan Privasi</p>
+            <p class="text-sm font-medium leading-5 text-white/85 my-2">Syarat & Ketentuan</p>
+            <p class="text-sm font-medium leading-5 text-white/85 my-2">Kebijakan Privasi</p>
           </div>
+
         </div>
 
         <div class="footer-bottom">
@@ -506,13 +577,13 @@
             <div class="footer-divider"></div>
             <div class="footer-copyright">
               <img
-                src="https://ternakuang.id/wp-content/uploads/2024/12/TERNAKUANG.svg"
-                alt="Ternak Cuan"
+                src="{{ url('storage/'.$webconfig['logo']) }}"
+                alt="{{ $webconfig['title'] }}"
                 class="footer-logo"
                 width="196"
                 height="18"
               />
-              <p class="copyright-text">© 2025 PT. {{ $webconfig['main_title'] }}</p>
+              <p class="copyright-text">© {{ date('Y') }} PT. {{ $webconfig['main_title'] }}</p>
             </div>
           </div>
         </div>

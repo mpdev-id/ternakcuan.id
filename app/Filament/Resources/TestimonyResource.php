@@ -19,6 +19,8 @@ class TestimonyResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Testimony';
+
     public static function form(Form $form): Form
     {
         return $form
