@@ -57,6 +57,10 @@
     color: #000;
   }
 
+  .text-primary {
+    color: var(--maincolor);
+  }
+
   .btn-outline {
     background-color: transparent;
     border: 1px solid var(--maincolor);
@@ -930,6 +934,7 @@
       font-size: 24px;
       line-height: 32px;
     }
+
 
     .quote-container {
       flex-direction: column;

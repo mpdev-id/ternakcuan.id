@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="id">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ $webconfig['meta_maincolor'] }} {{ $seo['meta_title'] }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $seo['meta_title'] }}</title>
     <meta name="description" content="{{ $seo['meta_description'] }}">
     <meta name="keywords" content="{{ $seo['meta_keywords'] }}">
     <meta name="author" content="{{ $seo['meta_author'] }}">
@@ -12,11 +12,17 @@
     <meta property="og:title" content="{{ $seo['og_title'] }}">
     <meta property="og:description" content="{{ $seo['og_description'] }}">
     <meta property="og:image" content="{{ url('storage/'.$seo['og_image']) }}">
+    <meta property="og:url" content="{{ $seo['meta_canonical'] }}">
+    <meta property="og:type" content="website">
     <meta name="twitter:title" content="{{ $seo['twitter_title'] }}">
     <meta name="twitter:description" content="{{ $seo['twitter_description'] }}">
-    <meta name="twitter:image" content="{{ $seo['twitter_image'] }}">
+    <meta name="twitter:image" content="{{ url('storage/'.$seo['twitter_image']) }}">
+    <meta name="twitter:card" content="summary_large_image">
+    {{-- <meta name="twitter:site" content="{{ $seo['twitter_site'] }}"> --}}
     <link rel="shortcut icon" href="{{ url('storage/'.$webconfig['favicon']) }}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ url('storage/'.$webconfig['favicon']) }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url('storage/'.$webconfig['favicon']) }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('storage/'.$webconfig['favicon']) }}">
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
@@ -26,6 +32,8 @@
       rel="stylesheet"
     />
     <link rel="icon" href="{{ url('storage/'.$webconfig['favicon']) }}" type="image/x-icon">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 <style>
         :root {
           --maincolor: {{ $webconfig['main_color'] }};
@@ -37,7 +45,22 @@
         } */
     </style>
   </head>
-  <body >
+  <body>
+    <div id="loading-screen" class="fixed inset-0 bg-black z-50 flex items-center justify-center">
+        <img src="{{ url('storage/'.$webconfig['favicon']) }}" alt="Loading..." class="h-24 w-auto animate-pulse" />
+      </div>
+
+      <script>
+        window.addEventListener('load', function () {
+          const loader = document.getElementById('loading-screen');
+          if (loader) {
+            loader.style.opacity = '0';
+            loader.style.transition = 'opacity 2.5s ease';
+            setTimeout(() => loader.remove(), 2000);
+          }
+        });
+      </script>
+
     <div class="page-wrapper ">
       <!-- Header/Navigation -->
       <header class="main-header">
@@ -54,7 +77,7 @@
               {{-- {{ $seo['meta_title'] }} --}}
             </a>
           </div>
-          <nav class="main-nav">
+          <nav class="main-nav hidden md:block">
             <a href="{{ $copywriting['CTAlink'] }}" class="btn btn-primary z-40"
               >Jadi Member</a
             >
@@ -70,15 +93,17 @@
             <h1 class="hero-title">
                 {{ $copywriting['headline']}}
             </h1>
-            <p class="hero-subtitle">
+            <p class="hero-subtitle py-5">
                 {{ $copywriting['subheadline']}}
             </p>
 
-            <a
-              href="{{ $copywriting['CTAlink'] }}"
-              class="btn btn-primary btn-large"
-              >{{ $copywriting['CTAButton'] }}</a
-            >
+            <div class="hidden md:block">
+              <a
+                href="{{ $copywriting['CTAlink'] }}"
+                class="btn btn-primary btn-large "
+                >{{ $copywriting['CTAButton'] }}</a
+              >
+            </div>
           </div>
 
           <div class="hero-background -z-20">
@@ -91,8 +116,8 @@
             />
           </div>
 
-          <div class="hero-video-container gap-5 z-10">
-            {{-- @if (pathinfo($copywriting['company_video'], PATHINFO_EXTENSION) === 'mp4') --}}
+          <div class="hero-video-container gap-5 z-10 ">
+            @if (pathinfo($copywriting['company_video'], PATHINFO_EXTENSION) === 'mp4')
               <video
                 {{-- src="https://ternakuang.id/wp-content/uploads/2024/12/video-33.mp4" --}}
                 src="{{ $copywriting['company_video'] }}"
@@ -103,13 +128,21 @@
                 controlslist="nodownload"
                 class="hero-video"
               ></video>
-            {{-- @else
+
+            @else
               <img
-                src="{{ $copywriting['company_video'] }}"
+                src="{{ url('storage/'.$copywriting['company_video']) }}"
                 alt="Hero Image"
                 class="hero-image"
               />
-            @endif --}}
+            @endif
+            <div class="md:hidden w-full mx-auto flex justify-center m-3">
+                <a
+                  href="{{ $copywriting['CTAlink'] }}"
+                  class="btn btn-primary btn-large"
+                  >{{ $copywriting['CTAButton'] }}</a
+                >
+              </div>
           </div>
         </div>
       </section>
@@ -117,14 +150,14 @@
       <!-- Partners Section -->
 
       <section class="container my-20">
-        <div class="md:flex md:flex-col md:items-center md:justify-center md:gap-8 filter grayscale sm:flex sm:flex-row sm:items-center sm:gap-4">
+        <div class="flex flex-col items-center justify-center gap-8 filter grayscale ">
           <div class="flex gap-6">
            @foreach ($partners->where('type', 'agregator') as $agregator)
 
            <img
            src="{{ asset('storage/'.$agregator['logo']) }}"
            alt="{{ $agregator['name'] }} logo"
-           class="w-20 object-scale-down"
+           class="w-14 md:w-18 object-scale-down"
            />
            @endforeach
           </div>
@@ -135,7 +168,7 @@
             <img
             src="{{ asset('storage/'.$ekspedisi['logo']) }}"
             alt="{{ $ekspedisi['name'] }} logo"
-            class="w-20 object-scale-down"
+            class="w-14 md:w-18 object-scale-down"
             />
             @endforeach
           </div>
@@ -160,9 +193,9 @@
           <h2 class="section-title">
             Tentang Kami
           </h2>
-          <p class="about-subtitle">
+          <span class="btn btn-primary text-2xl">
            {{ $about['title'] }}
-          </p>
+          </span>
           <div class="sm:w-full md:w-3/6 text-justify">
             {{ $about['description']  }}
           </div>
@@ -172,7 +205,7 @@
       <!-- Benefits Section -->
       <section class="benefits-section">
         <div class="container benefits-container">
-          <h2 class="section-title" >Layanan {{ $webconfig['title'] }}</h2>
+          <h2 class="section-title" >Layanan <strong class="text-primary">{{ $webconfig['title'] }}</strong></h2>
 {{--
           <div class="benefits-cards">
             <div class="benefit-card">
@@ -275,17 +308,17 @@
       <!-- Membership Section -->
    <section id="join" class="membership-section">
         <div class="container membership-container">
-            {{-- <div class="membership-background-left">
+            <div class="membership-background-left">
                 <img src="{{ asset('asset/images/asset_1_10x_6.webp') }}" alt=""
-                    class="membership-bg-image" width="1725" height="1225" />
+                    class="membership-bg-image -z-100" width="1725" height="1225" />
             </div>
-            <div class="membership-background-right">
+            {{-- <div class="membership-background-right">
                 <img src="{{ asset('asset/images/asset_1_10x_6.webp') }}" alt=""
-                    class="membership-bg-image" width="1225" height="1225" />
+                    class="membership-bg-image -z-100" width="1225" height="1225" />
             </div> --}}
 
             <h2 class="membership-title">
-                <span>Meta Ads</span>
+                <span class="text-primary">Meta</span> Ads
                 {{-- <span class="bold">
                     <img class="w-24" src="{{ asset('storage/'.$webconfig['logo']) }}" alt=""
                         srcset="{{ asset('storage/'.$webconfig['logo']) }}">
@@ -296,15 +329,12 @@
             <p class="h-10 bold text-center text-xl">
                 🚀 Naikkan Penjualan dengan Iklan Meta Ads yang Tertarget!
             </p>
-            <div class="sm:w-full md:w-4/6 text-justify">
+            <div class="sm:w-full md:w-4/6 text-center">
                 Mau bisnismu tampil di depan ribuan calon pembeli di Facebook & Instagram?
-                <strong>Ternak Cuan Digital Marketing</strong> siap bantu kamu tembus pasar dengan
-                <strong>strategi Meta Ads yang terbukti menghasilkan!</strong>
+                <strong class="btn-primary px-1 rounded m-1">Ternak Cuan Digital Marketing</strong>siap bantu kamu tembus pasar dengan
+                <strong class="btn-primary px-1 rounded m-1">strategi Meta Ads yang terbukti menghasilkan!</strong>
             </div>
             <h2 class="text-2xl">Apa yang kamu dapatkan?</h2>
-
-
-
                 <div class="space-y-2">
                     @foreach ($benefits as $item)
                         <div class="bg-zinc-900 text-white rounded-xl p-4 shadow-lg transition hover:shadow-2xl border border-zinc-700" style="max-width: 475px !important;">
@@ -399,35 +429,47 @@
       <!-- Quote Section -->
 
       @foreach ($quotes as $quote)
-            <div class="{{ $quote->quoted_by !='hadis'?'quote-section':'text-center'}}">
-                <div class="container ">
-                <div class="{{ $quote->quoted_by !='hadis'?'quote-container':'container'}}">
-                    <div class="{{ $quote->quoted_by !='hadis'?'quote-image-container':'disabled'}}">
-                    @if ($quote->image)
-                    <img
-                    src="{{ url('storage/'.$quote->image) }}"
-                    alt="Warren Buffett"
-                    class="quote-image"
-                    width="50%"
-                    {{-- height="50" --}}
-                    />
-                    @endif
-                </div>
+      <div class="bg-gray-800 bg-opacity-40 text-white py-5 my-10">
+          <div class="container mx-auto px-4">
+              @if ($quote->quoted_by != 'hadis')
+                  <div class="flex flex-col md:flex-row items-center justify-center gap-6 filter grayscale">
+                      {{-- Gambar --}}
+                      @if ($quote->image)
+                          <div class="w-full md:w-1/2 flex justify-center">
+                              <img src="{{ url('storage/' . $quote->image) }}"
+                                  alt="{{ $quote->quoted_by }}"
+                                  class="max-w-xs md:max-w-md rounded shadow-lg">
+                          </div>
+                      @endif
 
-                <div class="{{ $quote->quoted_by !='hadis'?'quote-content':'text-center'}}">
-                    {{ $quote->quoted_by }}
-                        <blockquote class="quote-text">
-                    {{ $quote->quote }}
-                    </blockquote>
-                </div>
+                      {{-- Konten Kutipan --}}
+                      <div class="w-full md:w-1/2">
+                          <blockquote class="italic text-lg md:text-xl leading-relaxed mb-4">
+                              &ldquo;{{ $quote->quote }}&rdquo;
+                          </blockquote>
+                          <p class="font-semibold">{{ $quote->quoted_by }}</p>
+                      </div>
+                  </div>
+              @else
+                  {{-- Tampilan khusus untuk hadis --}}
+                  <div class="text-center max-w-2xl mx-auto">
+                      <blockquote class="italic text-lg md:text-xl leading-relaxed mb-4">
+                          &ldquo;{{ $quote->quote }}&rdquo;
+                      </blockquote>
+                      <p class="font-semibold">{{ ucfirst($quote->quoted_by) }}</p>
+                  </div>
+              @endif
+          </div>
+      </div>
+  @endforeach
 
-                </div>
-            </div>
-        </div>
-        @endforeach
+
 
       <!-- Testimonials Section -->
       <section class="testimonials-section container">
+        <h2 class="testimonial-title text-center text-2xl bold">
+            Apa Kata <span class="text-primary">Peternak Cuan</span>
+        </h2>
         <div class="swiper-container overflow-hidden">
           <div class="swiper-wrapper">
             @foreach ($testimonies as $testimonial)
@@ -443,7 +485,7 @@
             @endforeach
           </div>
           <!-- Add Pagination -->
-          <div class="swiper-pagination"></div>
+          {{-- <div class="swiper-pagination"></div> --}}
           <!-- Add Navigation -->
           {{-- <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div> --}}
@@ -484,46 +526,58 @@
       </section>
 
       <section class="container md:w-3/5 w-full p-6 rounded-lg shadow-md mt-60 md:mt-60">
-        <h3 class="mailer-title text-3xl font-bold text-white tracking-wide leading-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Yuk, Mulai Ternak Cuan Hari Ini!</h3>
+        <h3 class="mailer-title text-3xl font-bold text-white tracking-wide leading-tight bg-clip-text ">Yuk, Mulai <strong class="btn-primary rounded px-2 ">Ternak Cuan</strong> Hari Ini!</h3>
         <p class="mailer-text text-gray-400">Hubungi tim kami untuk pertanyaan, kerjasama, atau sekadar ngobrol santai soal digital marketing.</p>
-        <form action="#" method="POST">
-          @csrf
-          <div class="form-group mb-6">
-            <label for="name" class="block text-white text-sm font-bold mb-2">Nama</label>
-            <input type="text" name="name" id="name" class="form-control block w-full px-4 py-2 text-gray-700 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 @error('name') border-red-500 @enderror" value="{{ old('name') }}" required>
-            @error('name')
-              <span class="text-red-500 text-sm" role="alert">
-                <strong>{{ $message }}</strong>
-              </span>
-            @enderror
+        @if (session('success'))
+          <div class="alert alert-success my-5">
+            <strong>{{ session('success') }}</strong>
           </div>
-          <div class="form-group mb-6">
-            <label for="email" class="block text-white text-sm font-bold mb-2">Email</label>
-            <input type="email" name="email" id="email" class="form-control block w-full px-4 py-2 text-gray-700 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 @error('email') border-red-500 @enderror" value="{{ old('email') }}" required>
-            @error('email')
-              <span class="text-red-500 text-sm" role="alert">
-                <strong>{{ $message }}</strong>
-              </span>
-            @enderror
-          </div>
-          <div class="form-group mb-6">
-            <label for="message" class="block text-white text-sm font-bold mb-2">Pesan</label>
-            <textarea name="message" id="message" class="form-control block w-full px-4 py-2 text-gray-700 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 @error('message') border-red-500 @enderror" required>{{ old('message') }}</textarea>
-            @error('message')
-              <span class="text-red-500 text-sm" role="alert">
-                <strong>{{ $message }}</strong>
-              </span>
-            @enderror
-          </div>
-          <button type="submit" class="bg-gray-900  inline-flex items-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:ring-primary active:bg-primary-700 transition ease-in-out duration-150">
-            Kirim Pesan
-          </button>
-        </form>
+        @else
+          <form action="{{ route('send.wa') }}" method="POST" id="form-wa" onsubmit="document.getElementById('btn-submit').style.display = 'none'; document.getElementById('loading').style.display = 'block'">
+            @csrf
+            <div class="form-group mb-6">
+              <label for="name" class="block text-white text-sm font-bold mb-2">Nama</label>
+              <input type="text" name="name" id="name" class="form-control block w-full px-4 py-2 text-gray-700 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 @error('name') border-red-500 @enderror" value="{{ old('name') }}" required>
+              @error('name')
+                <span class="text-red-500 text-sm" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+              @enderror
+            </div>
+            <div class="form-group mb-6">
+              <label for="email" class="block text-white text-sm font-bold mb-2">Email</label>
+              <input type="email" name="email" id="email" class="form-control block w-full px-4 py-2 text-gray-700 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 @error('email') border-red-500 @enderror" value="{{ old('email') }}" required>
+              @error('email')
+                <span class="text-red-500 text-sm" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+              @enderror
+            </div>
+            <div class="form-group mb-6">
+              <label for="message" class="block text-white text-sm font-bold mb-2">Pesan</label>
+              <textarea name="message" id="message" class="form-control block w-full px-4 py-2 text-gray-700 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 @error('message') border-red-500 @enderror" required>{{ old('message') }}</textarea>
+              @error('message')
+                <span class="text-red-500 text-sm" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+              @enderror
+            </div>
+            <button type="submit" class="btn btn-primary  inline-flex items-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:ring-primary active:bg-primary-700 transition ease-in-out duration-150" id="btn-submit">
+              Kirim Pesan
+            </button>
+            <div id="loading" style="display: none">
+              <svg class="animate-spin h-5 w-5 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </div>
+          </form>
+        @endif
       </section>
 
       <!-- Footer -->
       <footer class="main-footer">
-        <div class="flex items-center justify-between container w-10/12 p-20">
+        <div class="flex flex-col justify-center md:flex-row md:items-center md:justify-between md:container md:w-10/12 md:p-20 p-5 sm:w-full mx-auto">
 
           <div class="gap-5 py-10">
             <h3 class="footer-title">{{ $webconfig['main_title'] }}</h3>
@@ -531,7 +585,7 @@
                 {{$webconfig['main_address']}}
             </p>
             <p class="footer-cs text-sm font-medium leading-5 text-white/85">CS : <a href="mailto:{{ $webconfig['email'] }}">{{ $webconfig['email'] }}</a></p>
-            <div class="footer-social my-5">
+            <div class="md:footer-social my-5 flex sm:flex-col md:flex-row gap-5">
               <p class="social-title">Ikuti Kami :</p>
 
               @if (!is_null($webconfig['facebook']))
@@ -564,11 +618,64 @@
             </div>
           </div>
 
-          <div class="gap-5">
+          <div class="md:gap-5">
             <h3 class="footer-title">Bantuan & Panduan</h3>
-            <p class="text-sm font-medium leading-5 text-white/85 my-2">Syarat & Ketentuan</p>
-            <p class="text-sm font-medium leading-5 text-white/85 my-2">Kebijakan Privasi</p>
+            <p class="text-sm font-medium leading-5 text-white/85 my-2"> <button data-modal-target="modal-syarat" class="text-sm font-medium text-white/85 hover:underline">
+                Syarat & Ketentuan
+              </button></p>
+            <p class="text-sm font-medium leading-5 text-white/85 my-2"><button data-modal-target="modal-privasi" class="text-sm font-medium text-white/85 hover:underline">
+                Kebijakan Privasi
+              </button></p>
           </div>
+
+          <!-- Modal: Syarat & Ketentuan -->
+<div id="modal-syarat" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+    <div class="bg-white text-black w-full max-w-2xl rounded-xl shadow-lg p-6 relative">
+      <button class="absolute top-3 right-4 text-gray-600 hover:text-black text-xl font-bold" onclick="closeModal('modal-syarat')">×</button>
+      <h2 class="text-xl font-semibold mb-4">Syarat & Ketentuan</h2>
+      <div class="max-h-[60vh] overflow-y-auto space-y-3">
+        {{-- Ganti konten ini --}}
+        <p>Syarat dan ketentuan akan di tuliskan disini...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Kebijakan Privasi -->
+  <div id="modal-privasi" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+    <div class="bg-white text-black w-full max-w-2xl rounded-xl shadow-lg p-6 relative">
+      <button class="absolute top-3 right-4 text-gray-600 hover:text-black text-xl font-bold" onclick="closeModal('modal-privasi')">×</button>
+      <h2 class="text-xl font-semibold mb-4">Kebijakan Privasi</h2>
+      <div class="max-h-[60vh] overflow-y-auto space-y-3">
+        {{-- Ganti konten ini --}}
+        <p>Privasi Anda penting bagi kami. Berikut adalah detail kebijakan privasi kami...</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Buka modal
+    document.querySelectorAll('[data-modal-target]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-modal-target');
+        document.getElementById(target).classList.remove('hidden');
+      });
+    });
+
+    // Tutup modal
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    // Tutup modal jika klik di luar konten
+    document.addEventListener('click', function (e) {
+      const modals = document.querySelectorAll('[id^="modal-"]');
+      modals.forEach(modal => {
+        if (!modal.classList.contains('hidden') && e.target === modal) {
+          modal.classList.add('hidden');
+        }
+      });
+    });
+  </script>
+
 
         </div>
 
@@ -590,4 +697,12 @@
       </footer>
     </div>
   </body>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000, // durasi animasi
+    once: true      // hanya sekali animasi
+  });
+</script>
+
 </html>
