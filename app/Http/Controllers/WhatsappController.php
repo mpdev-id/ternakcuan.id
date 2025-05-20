@@ -54,11 +54,11 @@ public function sendWhatsAppMessageToAdmin(Contact $contact)
     $templateID = '4ed19b5a-8f33-4084-ab81-e994954361ba';
     $email = $contact->email;
     $name = $contact->name;
-    $pesan = $contact->message;
+    $pesan = $contact->message ;
     return $this->sendWhatsAppMessage($phone, $templateID, [
         'name' => $name,
         'email' => $email,
-        'message' => $pesan
+        'message' => url('/').' 💌 '. $pesan,
     ]);
 }
 
@@ -67,7 +67,7 @@ public function sendWhatsAppMessage($phone, $template_id, $variables)
     try {
         $response = Http::asForm()->get('http://wa.mpdev.my.id/api/create-message', [
             'appkey' => '176e2f90-e296-4ad3-ba8d-21800df7291e',
-            'authkey' => 'leCHx6mMsXrEA0puYPJt90bdV49mhAp36njKoGDPzWJV15fiwJ',
+            'authkey' => 'l7onU0XO2sUSm76Mo72PtqGC3X2rGrzHCly6zAn3kt28Kcf61f',
             'to' => $phone,
             'template_id' => $template_id,
             'variables' => $variables,

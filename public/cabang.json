@@ -1,0 +1,209 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pulau Jawa",
+        "avgNetProfit": 71382,
+        "cabang": "SERANG"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[106.0, -6.0], [107.0, -6.0], [107.0, -7.0], [106.0, -7.0], [106.0, -6.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nusa Tenggara Barat + Bali",
+        "avgNetProfit": 66441,
+        "cabang": "MATARAM"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[115.5, -8.2], [116.5, -8.2], [116.5, -9.0], [115.5, -9.0], [115.5, -8.2]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Banda Aceh, Sumatra Utara, Sumatra Barat, Jambi, Kep Riau",
+        "avgNetProfit": 75256,
+        "cabang": "MEDAN"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[96.0, 5.5], [102.0, 5.5], [102.0, -2.0], [96.0, -2.0], [96.0, 5.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nusa Tenggara Timur",
+        "avgNetProfit": 103536,
+        "cabang": "KUPANG"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[122.0, -8.0], [125.0, -8.0], [125.0, -11.0], [122.0, -11.0], [122.0, -8.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sulawesi Selatan, Sulawesi Barat, Sulawesi Tengah, Sulawesi Tenggara",
+        "avgNetProfit": 72183,
+        "cabang": "MAKASSAR"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[118.0, -1.0], [123.0, -1.0], [123.0, -5.5], [118.0, -5.5], [118.0, -1.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kalimantan Selatan, Kalimantan Tengah",
+        "avgNetProfit": 79442,
+        "cabang": "BANJARMASIN"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[113.0, -1.0], [116.0, -1.0], [116.0, -4.5], [113.0, -4.5], [113.0, -1.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kalimantan Barat",
+        "avgNetProfit": 81607,
+        "cabang": "PONTIANAK"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[108.0, 0.0], [111.0, 0.0], [111.0, -2.0], [108.0, -2.0], [108.0, 0.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Maluku Utara",
+        "avgNetProfit": 122318,
+        "cabang": "TERNATE"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[126.0, 0.5], [129.0, 0.5], [129.0, -1.0], [126.0, -1.0], [126.0, 0.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Papua Barat Daya",
+        "avgNetProfit": 153709,
+        "cabang": "SORONG"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[130.0, -0.5], [132.0, -0.5], [132.0, -2.5], [130.0, -2.5], [130.0, -0.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Maluku",
+        "avgNetProfit": 129385,
+        "cabang": "AMBON"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[127.0, -2.0], [129.0, -2.0], [129.0, -4.0], [127.0, -4.0], [127.0, -2.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Papua, Papua Pegunungan",
+        "avgNetProfit": 127232,
+        "cabang": "JAYAPURA"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[139.0, -2.0], [142.0, -2.0], [142.0, -5.0], [139.0, -5.0], [139.0, -2.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Papua Selatan",
+        "avgNetProfit": 149168,
+        "cabang": "MERAUKE"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[138.0, -6.0], [142.0, -6.0], [142.0, -9.0], [138.0, -9.0], [138.0, -6.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Papua Tengah",
+        "avgNetProfit": 181594,
+        "cabang": "TIMIKA"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[136.0, -3.0], [138.0, -3.0], [138.0, -5.0], [136.0, -5.0], [136.0, -3.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Papua Barat",
+        "avgNetProfit": 166667,
+        "cabang": "MANOKWARI"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[132.0, -0.5], [134.0, -0.5], [134.0, -2.0], [132.0, -2.0], [132.0, -0.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sulawesi Utara, Gorontalo",
+        "avgNetProfit": 87341,
+        "cabang": "MANADO"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[123.0, 0.5], [126.0, 0.5], [126.0, -1.5], [123.0, -1.5], [123.0, 0.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kalimantan Utara, Kalimantan Timur",
+        "avgNetProfit": 81218,
+        "cabang": "TARAKAN"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[116.0, 2.0], [119.0, 2.0], [119.0, 0.0], [116.0, 0.0], [116.0, 2.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lampung, Sumatra Selatan, Riau, Kep Bangka Belitung",
+        "avgNetProfit": 60856,
+        "cabang": "BANDARLAMPUNG"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[103.0, -2.0], [106.0, -2.0], [106.0, -5.0], [103.0, -5.0], [103.0, -2.0]]]
+      }
+    }
+  ]
+}
